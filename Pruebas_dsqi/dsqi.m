@@ -49,7 +49,7 @@ function [total_score,cont_score,sub_ind]=dsqi(ECG,fs)
      
     
  %%%%%%% QRS finding
-[qrs_i_raw,varargout] = pantompkins_qrs(signow,fs,logical(1));
+[qrs_i_raw,varargout] = pantompkins_qrs(signow,fs,logical(0));
  
   t=qrs_i_raw; %% t contains peaks
   beat_locations=qrs_i_raw(4:end);
@@ -134,7 +134,7 @@ for i=1:length(t)-3  %%moving window by window by 4 beats
          
 
 end
-hm3=ceil(sub_ind-0.6);
+hm3=ceil(sub_ind-0.60);
 idx3=[0 sum(hm3')>2 0];
  ii3=strfind(idx3,[0 1]);
  jj3=strfind(idx3,[1 0])-1;

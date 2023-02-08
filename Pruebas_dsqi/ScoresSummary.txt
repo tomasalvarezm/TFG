@@ -1,0 +1,41 @@
+ECGRuido.txt: 
+
+s1 = 0.7011
+c1 = 0.6809
+t1 = 0.8806
+
+ECGRuido2.txt:
+
+s2=0.6733
+c2 =0.6729
+t2 = 1
+
+ECGRuido3.txt:
+s3=0.6714
+c3 = 0.6694
+t3 = 1
+
+ECGRuidoNormal.txt:  
+
+s4 =0.6762
+c4 =  0.6759
+t4 = 1
+
+ECGNormal.txt:
+
+s5= 0.6965
+c4 = 0.6960
+t5 = 1 
+
+
+Tela1_Escaleras.txt:
+
+s6= 0.6713
+c6= 0.6432
+t6 =  0.8242
+
+Tela2_Escaleras.txt=
+
+s7 = 0.4134
+c7= 0.3653
+t7 = 0
