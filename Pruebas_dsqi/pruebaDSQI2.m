@@ -16,14 +16,10 @@ for i = 0:9
     data_f=data_s(i*(len_10)+1:(i+1)*(len_10)+1);
     [total_score,cont_score,sub_ind] = dsqi(data_f,333);
     fprintf('%i %f %f %f \n', i,  mean(mean(mean((sub_ind)))),  nanmean(cont_score), total_score);
-d(i*(len_10)+1:(i+1)*(len_10)+1)=cont_score;
-    
-     
+    d(i*(len_10)+1:(i+1)*(len_10)+1)=cont_score;  
 
 end
-figure
-hold on
+          plot(data_s);
           plot(d*70000);
-          plot(data_s)
 
 end 
