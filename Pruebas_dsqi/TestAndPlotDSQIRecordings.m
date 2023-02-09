@@ -36,6 +36,11 @@ hold on
 [t7,c7,s7]=pruebaDSQI("Tela2_Escaleras.txt");
 plot(c7 *70000)
 
+figure
+hold on
+[t8,c8,s8]=pruebaDSQI("ECGFlatLine.txt");
+plot(c8 *70000)
+
 
 
 % callculamos varios parámetros para ver  cuál representa mejor la calidad
@@ -70,7 +75,7 @@ disp("ECGRuido.txt");
 
  % haccemos el análisis en ventanas de longitud de un 10º de la duración
  % del registro
- 
+ %{
 disp("ECGRuido.txt");
 hold on
 [t1,c1,s1]=pruebaDSQI2("ECGRuido.txt");
@@ -98,4 +103,5 @@ disp("Tela2_Escaleras.txt");
 figure
 hold on
 [t7,c7,s7]=pruebaDSQI2("Tela2_Escaleras.txt");
+%}
 
