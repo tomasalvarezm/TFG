@@ -70,6 +70,7 @@ disp("ECGRuido.txt");
 
  % haccemos el análisis en ventanas de longitud de un 10º de la duración
  % del registro
+ 
 disp("ECGRuido.txt");
 hold on
 [t1,c1,s1]=pruebaDSQI2("ECGRuido.txt");
