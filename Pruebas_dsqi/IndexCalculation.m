@@ -1,16 +1,7 @@
 
 %calcular kurtosis(KSQI), skewness(sSQI), potencia en QRS(pSQI),
 %variabilidad entre intervalos R-R(cSQI) y potencia en baseline(basSQI)
-function [kSQI,sSQI, pSQI, cSQI, basSQI] = IndexCalculation(ECG)
-      ecg = importdata(ECG);
-      ecg_values = ecg.data;
-      data = ecg_values(:,3);
-      
-      FS_original = 1000;
-      Fs_new = 330;
-      [P,Q] = rat(Fs_new/FS_original);
-      data_s = resample(data,P,Q);
-      plot(data_s);
+function [kSQI,sSQI, pSQI, cSQI, basSQI] = IndexCalculation(data_s)
 
       kSQI = kurtosis(data_s); %kurtosis
       sSQI = skewness(data_s); %skewness

@@ -1,3 +1,2 @@
 
-
-[kSQI,sSQI, pSQI, cSQI] = IndexCalculation("ECGNormal.txt");
+[kSQI,sSQI, pSQI, cSQI] = IndexForWindows("ECGNormal.txt");
