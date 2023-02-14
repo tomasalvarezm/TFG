@@ -1,5 +1,0 @@
-hold on
-[kSQI,sSQI, pSQI, cSQI] = SignalIndexes("ECGNormal.txt");
-plot(cSQI);
-
-
