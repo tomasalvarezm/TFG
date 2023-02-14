@@ -23,14 +23,14 @@ function [kSQI,sSQI, pSQI, cSQI, basSQI] = IndexForWindows(ECG)
       for i=1:(((round(len/window_len))-1))
          data_f=data_s(i*(window_len)+1:(i+1)*(window_len)+1);
          [kSQI,sSQI, pSQI, cSQI] = IndexCalculation(data_f);
-         kurtosis_vector(i:i+1) = kSQI; %no se actualiza el valor en cada vuelta del bucle
-         skewness_vector(i:i+1) = sSQI;
-         power_vector(i:i+1) = pSQI;
-         var_vector(i:i+1) = cSQI;
+         kurtosis_vector(i:i) = kSQI; 
+%          skewness_vector(i:i+1) = sSQI;
+%          power_vector(i:i+1) = pSQI;
+%          var_vector(i:i+1) = cSQI;
         
       end
+          
           plot(data_s);
-          %hold on
           plot(kurtosis_vector);
 
 end
