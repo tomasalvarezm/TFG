@@ -32,6 +32,6 @@ function [kSQI,sSQI, pSQI, cSQI, basSQI] = IndexForWindows(ECG)
           
           plot(data_s);
           hold on
-          plot(kurtosis_vector,'-r'); 
+          plot(kurtosis_vector*6000,'-r');
 
 end
