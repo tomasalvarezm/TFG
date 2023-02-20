@@ -11,7 +11,7 @@ function [kSQI,sSQI, pSQI, cSQI, basSQI] = SignalIndexes(ECG)
       data_s = resample(data,P,Q);
       plot(data_s);
 
-      [kSQI,sSQI, pSQI, cSQI] = IndexCalculation(data_s);
+      [kSQI,sSQI, pSQI, cSQI,basSQI] = IndexCalculation(data_s);
       
 
       
