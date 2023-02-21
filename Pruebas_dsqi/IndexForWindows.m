@@ -19,11 +19,12 @@ function [kurtosis_vector,skewness_vector, power_vector, var_vector, bas_vector]
       power_vector = zeros(1,size_vector);
       var_vector = zeros(1,size_vector);
       bas_vector = zeros(1,size_vector);
-      %falta el de baseline(basSQI)
+      [qrs,varargout] = pantompkins_qrs(data_s,330,logical(0)); 
 
       for i=1:(((round(len/window_len))-1))
+          
          data_f=data_s(i*(window_len)+1:(i+1)*(window_len)+1);
-         [kSQI,sSQI, pSQI, cSQI,basSQI] = IndexCalculation(data_f);
+         [kSQI,sSQI, pSQI, cSQI,basSQI] = IndexCalculation2(data_f,qrs,i);
          kurtosis_vector(i) = kSQI; 
          kv_ups = upsampleVector(kurtosis_vector);
          skewness_vector(i) = sSQI;
@@ -34,7 +35,6 @@ function [kurtosis_vector,skewness_vector, power_vector, var_vector, bas_vector]
          vv_ups = upsampleVector(var_vector);
          bas_vector(i) = basSQI;
          bv_ups = upsampleVector(bas_vector);
-        
       end
           
           plot(data_s);
