@@ -1,8 +1,8 @@
 
-%[kurtosis_vector,skewness_vector, power_vector, var_vector, bas_vector] = IndexForWindows("ECGNormal.txt");
+[kurtosis_vector,skewness_vector, power_vector, var_vector, bas_vector] = IndexForWindows("ECGNormal.txt");
 
 
 
-[kSQI,sSQI, pSQI, cSQI,basSQI] = SignalIndexes("ECGNormal.txt");
+%[kSQI,sSQI, pSQI, cSQI,basSQI] = SignalIndexes("ECGNormal.txt");
 
 
