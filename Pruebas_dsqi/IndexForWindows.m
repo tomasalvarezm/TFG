@@ -6,7 +6,7 @@ function [kurtosis_vector,skewness_vector, power_vector, var_vector, bas_vector]
       data = ecg_values(:,3);
       
       FS_original = 1000;
-      Fs_new = 330;
+      Fs_new = samplingFreq;
       [P,Q] = rat(Fs_new/FS_original);
       data_s = resample(data,P,Q);
       %plot(data_s);
