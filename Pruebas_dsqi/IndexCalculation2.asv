@@ -58,12 +58,8 @@ function[bas_power] = baseline_drift(data)
     %que estamos usando  entteros comunidades arbitrarias para el cálculo
     %de la potencia en las bandas,  y no las   unidades reales
     %(milivoltios)  del electrocardiograma.
+    p1 = p1/(330*length(data));
+    p2 = p2/(330*length(data));
 
-    % normalizados la potencia espectral; con la fórmula que está puesta
-    % ahora nos debería importar,, pero si puede ser importante cuando tenemos el 1-
-    % https://www.mathworks.com/matlabcentral/answers/706048-normalization-of-power-spectral-density
-    p1 = p1*p1/(330*length(data));
-    p2 = p2*p2/(330*length(data));
-
-    bas_power = 1-p1/p2;
+    bas_power = (1-p1)/p2;
 end 
