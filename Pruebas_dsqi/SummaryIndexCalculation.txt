@@ -1,0 +1,41 @@
+ECGNormal: 
+ksQI: 27.93
+sSQI: 4.46
+pSQI: 0.65
+cSQI: 0.10
+basSQI: 0.96
+
+ECGRuido: 
+ksQI: 5.29
+sSQI: 0.61
+pSQI: 0.26
+cSQI: 1.18
+basSQI: 0.57
+
+ECGRuido2: 
+ksQI: 14.02
+sSQI: 0.23
+pSQI: 0.19
+cSQI: 0.45
+basSQI: 0.97
+
+ECGRuido3: 
+ksQI: 4.85
+sSQI: 0.04
+pSQI: 0.07
+cSQI: 0.97
+basSQI: 0.99
+
+ECGRuidoNormal: 
+ksQI: 12.71
+sSQI: 0.005
+pSQI: 0.25
+cSQI: 0.53
+basSQI: 0.96
+
+Tela1_Escaleras: 
+ksQI: 4.51
+sSQI: 0.39
+pSQI: 0.76
+cSQI: 1.13
+basSQI: 0.97

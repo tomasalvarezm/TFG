@@ -3,6 +3,6 @@
 
 
 
-%[kSQI,sSQI, pSQI, cSQI,basSQI] = SignalIndexes("ECGNormal.txt");
+%[kSQI,sSQI, pSQI, cSQI,basSQI] = SignalIndexes("Tela1_Escaleras.txt");
 
 

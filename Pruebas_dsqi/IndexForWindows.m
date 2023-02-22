@@ -12,7 +12,7 @@ function [kurtosis_vector,skewness_vector, power_vector, var_vector, bas_vector]
       %plot(data_s);
 
       len = length(data_s);
-      window_len = 4*Fs_new;
+      window_len = windowSize*Fs_new;
       size_vector = round(len/window_len);
       kurtosis_vector =zeros(1,size_vector);
       skewness_vector = zeros(1,size_vector);
@@ -24,7 +24,8 @@ function [kurtosis_vector,skewness_vector, power_vector, var_vector, bas_vector]
       for i=1:(((round(len/window_len))-1))
           
          data_f=data_s(i*(window_len)+1:(i+1)*(window_len)+1);
-         [kSQI,sSQI, pSQI, cSQI,basSQI] = IndexCalculation2(data_f,qrs,i);
+         qrs_window = qrs(i:i+windowSize); 
+         [kSQI,sSQI, pSQI, cSQI,basSQI] = IndexCalculation(data_f,qrs_window);
          kurtosis_vector(i) = kSQI; 
          kv_ups = upsampleVector(kurtosis_vector);
          skewness_vector(i) = sSQI;
@@ -36,7 +37,8 @@ function [kurtosis_vector,skewness_vector, power_vector, var_vector, bas_vector]
          bas_vector(i) = basSQI;
          bv_ups = upsampleVector(bas_vector);
       end
-          
+          showAllPlots = showPlots;
+          if(showAllPlots == 1)
           plot(data_s);
           hold on;
           plot(kv_ups*(50000/mean(kurtosis_vector))); %upsampling del vector y multiplicar 
@@ -65,12 +67,13 @@ function [kurtosis_vector,skewness_vector, power_vector, var_vector, bas_vector]
           hold on;
           plot(bv_ups*(50000/mean(bas_vector)));
           title("ECG+BaseLine");
+          end
 
 end
 
 function [vector_ups] = upsampleVector(vector)
-    Fs = 0.25;
-    Fs_ecg = 330;
+    Fs = 0.1;
+    Fs_ecg = samplingFreq;
     [P1,Q1] = rat(Fs_ecg/Fs);
     vector_ups = resample(vector,P1,Q1);
 
