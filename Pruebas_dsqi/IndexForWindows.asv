@@ -43,7 +43,7 @@ function [kurtosis_vector,skewness_vector, power_vector, var_vector, bas_vector]
           hold on;
           plot(kv_ups*(50000/mean(kurtosis_vector))); %upsampling del vector y multiplicar 
           hold on;
-          yline(5*(50000/mean(kurtosis_vector)));
+          yline(5*(50000/mean(ku)))
           title("ECG+Kurtosis");
 
           figure
@@ -56,28 +56,18 @@ function [kurtosis_vector,skewness_vector, power_vector, var_vector, bas_vector]
           plot(data_s);
           hold on;
           plot(pv_ups*(50000/mean(power_vector)));
-          hold on;
-          yline(0.5*(50000/mean(power_vector)));
-          hold on;
-          yline(0.8*(50000/mean(power_vector)));
           title("ECG+Power");
 
           figure
           plot(data_s);
           hold on;
           plot(vv_ups*(50000/mean(var_vector)));
-          hold on;
-          yline(0.45*(50000/mean(var_vector)));
           title("ECG+R-RVariability");
 
           figure
           plot(data_s);
           hold on;
           plot(bv_ups*(50000/mean(bas_vector)));
-          hold on;
-          yline(0.95*(50000/mean(bas_vector)));
-          hold on;
-          yline(1*(50000/mean(bas_vector)));
           title("ECG+BaseLine");
           end
 

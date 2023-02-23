@@ -1,41 +1,41 @@
 ECGNormal: 
-ksQI: 27.93
+ksQI: 27.93 --> optimal
 sSQI: 4.46
-pSQI: 0.65
-cSQI: 0.10
-basSQI: 0.96
+pSQI: 0.65 --> optimal
+cSQI: 0.10 --> optimal
+basSQI: 0.96 --> optimal
 
 ECGRuido: 
-ksQI: 5.29
+ksQI: 5.29 --> optimal
 sSQI: 0.61
-pSQI: 0.26
-cSQI: 1.18
-basSQI: 0.57
+pSQI: 0.26 --> unqualified
+cSQI: 1.18 --> unqualified
+basSQI: 0.57 --> unqualified 
 
 ECGRuido2: 
-ksQI: 14.02
+ksQI: 14.02 --> optimal
 sSQI: 0.23
-pSQI: 0.19
-cSQI: 0.45
-basSQI: 0.97
+pSQI: 0.19 --> unqualified
+cSQI: 0.45 --> suspicious 
+basSQI: 0.97 --> optimal
 
 ECGRuido3: 
-ksQI: 4.85
+ksQI: 4.85 --> unqualified
 sSQI: 0.04
-pSQI: 0.07
-cSQI: 0.97
-basSQI: 0.99
+pSQI: 0.07 --> unqualified
+cSQI: 0.97 --> unqualified 
+basSQI: 0.99 --> optiaml
 
 ECGRuidoNormal: 
-ksQI: 12.71
+ksQI: 12.71 --> optimal
 sSQI: 0.005
-pSQI: 0.25
-cSQI: 0.53
-basSQI: 0.96
+pSQI: 0.25 --> unqualified
+cSQI: 0.53 --> suspicious 
+basSQI: 0.96 --> optimal
 
 Tela1_Escaleras: 
-ksQI: 4.51
+ksQI: 4.51 --> unqualified 
 sSQI: 0.39
-pSQI: 0.76
-cSQI: 1.13
-basSQI: 0.97
+pSQI: 0.76 --> optimal
+cSQI: 1.13 --> unqualified 
+basSQI: 0.97 --> optimal 
