@@ -12,7 +12,7 @@ end
 
 function[rel_power] = relativePower(data)
      freqrange1 = [5,15];
-     freqrange2 = [5,50];
+     freqrange2 = [5,40];
      %%@TODO  necesitamos hacer el cálculo en milivoltios. Ver comentarios en
      %baseline_drift. aquí quizás no esté afectando tanto porque hay un
      %simple cociente que elimina el factor de escala.  Pero en otra

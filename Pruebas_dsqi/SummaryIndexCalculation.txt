@@ -8,28 +8,28 @@ basSQI: 0.96 --> optimal
 ECGRuido: 
 ksQI: 5.29 --> optimal
 sSQI: 0.61
-pSQI: 0.26 --> unqualified
+pSQI: 0.68 --> optimal
 cSQI: 1.18 --> unqualified
 basSQI: 0.57 --> unqualified 
 
 ECGRuido2: 
 ksQI: 14.02 --> optimal
 sSQI: 0.23
-pSQI: 0.19 --> unqualified
+pSQI: 0.28 --> unqualified
 cSQI: 0.45 --> suspicious 
 basSQI: 0.97 --> optimal
 
 ECGRuido3: 
 ksQI: 4.85 --> unqualified
 sSQI: 0.04
-pSQI: 0.07 --> unqualified
+pSQI: 0.12 --> unqualified
 cSQI: 0.97 --> unqualified 
 basSQI: 0.99 --> optiaml
 
 ECGRuidoNormal: 
 ksQI: 12.71 --> optimal
 sSQI: 0.005
-pSQI: 0.25 --> unqualified
+pSQI: 0.34 --> unqualified
 cSQI: 0.53 --> suspicious 
 basSQI: 0.96 --> optimal
 
