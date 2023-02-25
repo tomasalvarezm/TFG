@@ -5,7 +5,7 @@ function [total_score, cont_score, sub_ind] = pruebaDSQI2(ECG)
       data = ecg_values(:,3);
       
       FS_original = 1000;
-      Fs_new = 333;
+      Fs_new = samplingFreq;
       [P,Q] = rat(Fs_new/FS_original);
       data_s = resample(data,P,Q);
 
@@ -14,7 +14,7 @@ function [total_score, cont_score, sub_ind] = pruebaDSQI2(ECG)
       d =zeros(1,len);
 for i = 0:9
     data_f=data_s(i*(len_10)+1:(i+1)*(len_10)+1);
-    [total_score,cont_score,sub_ind] = dsqi(data_f,333);
+    [total_score,cont_score,sub_ind] = dsqi(data_f,samplingFreq);
     fprintf('%i %f %f %f \n', i,  mean(mean(mean((sub_ind)))),  nanmean(cont_score), total_score);
     d(i*(len_10)+1:(i+1)*(len_10)+1)=cont_score;  
 

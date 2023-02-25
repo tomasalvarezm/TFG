@@ -15,8 +15,8 @@ function[rel_power] = relativePower(data)
      freqrange2 = [5,40];
      data_v = (((data/2^16)-1/2)*3)/1019;
      data_mv = data_v*1000;
-     p1 = bandpower(data_mv,330,freqrange1);
-     p2 =  bandpower(data_mv,330,freqrange2);
+     p1 = bandpower(data_mv,samplingFreq,freqrange1);
+     p2 =  bandpower(data_mv,samplingFreq,freqrange2);
      rel_power = p1/p2;
 
 end
@@ -37,8 +37,8 @@ function[bas_power] = baseline_drift(data)
     freq2 = [0,40];
     data_v1 = (((data/2^16)-1/2)*3)/1019;
     data_mv1 = data_v1*1000;
-    p1 = bandpower(data_mv1,330,freq1);
-    p2 = bandpower(data_mv1,330,freq2);
+    p1 = bandpower(data_mv1,samplingFreq,freq1);
+    p2 = bandpower(data_mv1,samplingFreq,freq2);
     
     %p1 = p1*p1/(samplingFreq*length(data));
     %p2 = p2*p2/(samplingFreq*length(data));
