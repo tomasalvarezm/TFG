@@ -1,6 +1,6 @@
 %calculate index for the complete signal 
 
-function [kSQI,sSQI, pSQI, cSQI, basSQI] = IndexForCompleteSignal(ECG)
+function [kSQI_01,sSQI_01, pSQI_01, cSQI_01, basSQI_01,dSQI_01,gmean] = IndexForCompleteSignal(ECG)
       ecg = importdata(ECG);
       ecg_values = ecg.data;
       data = ecg_values(:,3);
@@ -10,19 +10,10 @@ function [kSQI,sSQI, pSQI, cSQI, basSQI] = IndexForCompleteSignal(ECG)
       [P,Q] = rat(Fs_new/FS_original);
       data_s = resample(data,P,Q);
       [qrs,varargout] = pantompkins_qrs(data_s,samplingFreq,logical(0));
-      plot(data_s);
+      %plot(data_s);
 
-      [kSQI,sSQI, pSQI, cSQI,basSQI] = IndexCalculation(data_s,qrs);
-      [total_dSQI, cont_dSQI, s_dSQI] = dsqi(data_s, samplingFreq);
-      [kSQI_index01,sSQI_index01, pSQI_index01, cSQI_index01, basSQI_index01, gmean ] = AssignValueToIndexes(kSQI,sSQI,pSQI,cSQI,basSQI);
-%       disp(kSQI_index01);
-%       disp(sSQI_index01);
-%       disp(pSQI_index01);
-%       disp(cSQI_index01);
-%       disp(basSQI_index01);
-%       disp(gmean);
-      
-      
-
+      [kSQI,sSQI, pSQI, cSQI,basSQI] = IndexCalculation(data_s,qrs); %index calculation
+      [total_dSQI, cont_dSQI, s_dSQI] = dsqi(data_s, samplingFreq); %calculate dSQI
+      [kSQI_01,sSQI_01, pSQI_01, cSQI_01, basSQI_01,dSQI_01,gmean ] = AssignValueToIndexes(kSQI,sSQI,pSQI,cSQI,basSQI,total_dSQI); %translate index value to a value between 0.1 and 1
       
 end
