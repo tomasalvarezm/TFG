@@ -5,7 +5,7 @@ function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector, cSQI_01_vector, basSQI_
       ecg_values = ecg.data;
       data = ecg_values(:,3);
       
-      FS_original = 1000;
+      FS_original = originalFS;
       Fs_new = samplingFreq;
       [P,Q] = rat(Fs_new/FS_original);
       data_s = resample(data,P,Q);

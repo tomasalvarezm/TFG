@@ -5,7 +5,7 @@ function [kSQI_01,sSQI_01, pSQI_01, cSQI_01, basSQI_01,dSQI_01,gmean] = IndexFor
       ecg_values = ecg.data;
       data = ecg_values(:,3);
       
-      FS_original = 1000;
+      FS_original = originalFS;
       Fs_new = samplingFreq;
       [P,Q] = rat(Fs_new/FS_original);
       data_s = resample(data,P,Q);
