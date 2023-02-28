@@ -23,13 +23,16 @@ function [kSQI_01,sSQI_01, pSQI_01, cSQI_01, basSQI_01,dSQI_01,geometricMean] = 
    end
 
    %for pSQI
-   x_p = [0.9 0.5];
-   if pSQI>=0.9
+   x_p1 = [0.8 0.9];
+   x_p2 = [0.3 0.5];
+   if pSQI>=0.9 || pSQI<0.3
        pSQI_01 = lowerLimit;
    elseif pSQI>= 0.5 && pSQI< 0.8
        pSQI_01 = 1;
+   elseif pSQI>= 0.8 && pSQI<0.9
+       pSQI_01 = interp1(x_p1,y,pSQI);
    else
-       pSQI_01 = interp1(x_p,y,pSQI);
+       pSQI_01 = interp1(x_p2,y,pSQI);
    end
 
    %for cSQI
