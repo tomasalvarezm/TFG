@@ -1,6 +1,6 @@
 
 %calculate the index for windows of 4 seconds
-function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = IndexForSignalWindows(ECG)
+function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector] = IndexForSignalWindows(ECG)
       ecg = importdata(ECG);
       ecg_values = ecg.data;
       data = ecg_values(:,3);
@@ -53,7 +53,6 @@ function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector, cSQI_01_vector, basSQI_
          dSQI_01_vector(i)=dSQI_01;
          qrs_window = [];
       end
-          averageGeometricMean = mean(geometricMean_vector);
           %upsample de los vectores
           kurtosis_vector_ups = upsampleVector(kSQI_01_vector);
           skewness_vector_ups = upsampleVector(sSQI_01_vector);
@@ -64,34 +63,34 @@ function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector, cSQI_01_vector, basSQI_
 
           showAllPlots = showPlots;
           if(showAllPlots == 1)
-%           plot(data_s);
-%           hold on;
-%           plot(kurtosis_vector_ups*(50000/mean(kSQI_01_vector))); %upsampling del vector y multiplicar 
-%           title("ECG+Kurtosis");
-% 
-%           figure
-%           plot(data_s);
-%           hold on;
-%           plot(skewness_vector_ups*(50000/mean(sSQI_01_vector)));
-%           title("ECG+Skewness");
-% 
-%           figure
-%           plot(data_s);
-%           hold on;
-%           plot(power_vector_ups*(50000/mean(pSQI_01_vector)))
-%           title("ECG+Power");
-% 
-%           figure
-%           plot(data_s);
-%           hold on;
-%           plot(var_vector_ups*(50000/mean(cSQI_01_vector)));
-%           title("ECG+R-RVariability");
-% 
-%           figure
-%           plot(data_s);
-%           hold on;
-%           plot(bas_vector_ups*(50000/mean(basSQI_01_vector)));
-%           title("ECG+BaseLine");
+          plot(data_s);
+          hold on;
+          plot(kurtosis_vector_ups*(50000/mean(kSQI_01_vector))); %upsampling del vector y multiplicar 
+          title("ECG+Kurtosis");
+
+          figure
+          plot(data_s);
+          hold on;
+          plot(skewness_vector_ups*(50000/mean(sSQI_01_vector)));
+          title("ECG+Skewness");
+
+          figure
+          plot(data_s);
+          hold on;
+          plot(power_vector_ups*(50000/mean(pSQI_01_vector)))
+          title("ECG+Power");
+
+          figure
+          plot(data_s);
+          hold on;
+          plot(var_vector_ups*(50000/mean(cSQI_01_vector)));
+          title("ECG+R-RVariability");
+
+          figure
+          plot(data_s);
+          hold on;
+          plot(bas_vector_ups*(50000/mean(basSQI_01_vector)));
+          title("ECG+BaseLine");
 
           figure 
           plot(data_s);
@@ -105,9 +104,8 @@ end
 function [vector_ups] = upsampleVector(vector)
     Fs = 1/windowSize;
     Fs_ecg = samplingFreq;
-    [P,Q] = rat(Fs_ecg/Fs);
-    vector_ups = resample(vector,P,Q);
-%     upsampleFactor = Fs_ecg/Fs;
-%     vector_ups = upsample(vector,upsampleFactor);
+    [P,qua]
+    upsampleFactor = Fs_ecg/Fs;
+    vector_ups = upsample(vector,upsampleFactor);
 
 end

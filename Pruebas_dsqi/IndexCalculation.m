@@ -24,8 +24,8 @@ end
 function[var_RR] = variability_RR(qrs_vector)
     len = length(qrs_vector);
     vector_RR= qrs_vector(2:len)-qrs_vector(1:(len-1));
-    vector_RR_seconds = vector_RR/samplingFreq;
-    vector_RR_ms = vector_RR_seconds*1000;
+    %vector_RR_seconds = vector_RR/samplingFreq;
+    vector_RR_ms = vector_RR*1000;
   
     %var_RR = std(vector_RR_seconds)/mean(vector_RR);
     var_RR = std(vector_RR_ms)/mean(vector_RR);
