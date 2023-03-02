@@ -13,7 +13,7 @@ function [kSQI_01,sSQI_01, pSQI_01, cSQI_01, basSQI_01,dSQI_01,geometricMean] = 
    end
 
    %for sSQI
-   x_s = [0.49 2.1];
+   x_s = [0.499 2.01];
    if sSQI<0.5
        sSQI_01 = lowerLimit;
    elseif sSQI>2
@@ -24,7 +24,7 @@ function [kSQI_01,sSQI_01, pSQI_01, cSQI_01, basSQI_01,dSQI_01,geometricMean] = 
 
    %for pSQI
    x_p1 = [0.9 0.799];
-   x_p2 = [0.3 0.5];
+   x_p2 = [0.299 0.5];
    if pSQI>=0.9 || pSQI<0.3
        pSQI_01 = lowerLimit;
    elseif pSQI>= 0.5 && pSQI< 0.8

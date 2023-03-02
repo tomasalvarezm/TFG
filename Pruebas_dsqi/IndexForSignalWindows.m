@@ -30,7 +30,7 @@ function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector, cSQI_01_vector, basSQI_
       for i=1:floor(len/window_len)
           
          data_f=data_s((i-1)*(window_len)+1:i*(window_len)+1);
-
+         %plot(data_f);
          for j=1:(qrs_len-1)
              if qrs_seconds(j) >= ((i-1)*windowSize) && qrs_seconds(j)< (i*windowSize)
                  qrs_window(end+1) = qrs_seconds(j);
