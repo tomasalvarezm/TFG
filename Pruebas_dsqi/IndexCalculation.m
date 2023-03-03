@@ -27,7 +27,6 @@ function[var_RR] = variability_RR(qrs_vector)
     vector_RR= qrs_vector(2:len)-qrs_vector(1:(len-1)); %esto ya está en segundos y no en muestras
     %vector_RR_seconds = vector_RR/samplingFreq;
     vector_RR_ms = vector_RR*1000;
-    %var_RR = std(vector_RR_seconds)/mean(vector_RR);
     var_RR = std(vector_RR_ms)/mean(vector_RR_ms);
 end
 

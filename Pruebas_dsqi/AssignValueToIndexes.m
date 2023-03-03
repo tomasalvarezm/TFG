@@ -3,13 +3,13 @@
 function [kSQI_01,sSQI_01, pSQI_01, cSQI_01, basSQI_01,dSQI_01,geometricMean] = AssignValueToIndexes(kSQI,sSQI, pSQI, cSQI, basSQI,total_dSQI)
    y = [lowerLimit 1]; %vector para interpolation
    %for kSQI
-   x_k = [2.5 5.1];
+   x_k = [2.5 5.01];
    if kSQI<=2.5
      kSQI_01 = lowerLimit;
    elseif kSQI>5
       kSQI_01 =1;
    else
-    kSQI_01 = interp1(x_k,y,kSQI);
+      kSQI_01 = interp1(x_k,y,kSQI);
    end
 
    %for sSQI
@@ -25,7 +25,9 @@ function [kSQI_01,sSQI_01, pSQI_01, cSQI_01, basSQI_01,dSQI_01,geometricMean] = 
    %for pSQI
    x_p1 = [0.9 0.799];
    x_p2 = [0.299 0.5];
-   if pSQI>=0.9 || pSQI<0.3
+   if pSQI>=0.9 
+       pSQI_01 = lowerLimit;
+   elseif pSQI<0.3
        pSQI_01 = lowerLimit;
    elseif pSQI>= 0.5 && pSQI< 0.8
        pSQI_01 = 1;
