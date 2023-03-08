@@ -46,9 +46,8 @@ function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector, cSQI_01_vector, basSQI_
          fprintf('%.2f ', [kSQI_01, sSQI_01, pSQI_01, SQI_rel_powerLine_01, cSQI_01, basSQI_01, dSQI_01, geometricMean]);
          fprintf("\n");
         
-         if(geometricMean < 0.8)
+         if (geometricMean < 0.8)
                       fprintf("\n");
-         end
 
          %metemos el valor en cada uno de los vectores 
          kSQI_01_vector(i) = kSQI_01; 
@@ -113,9 +112,9 @@ function [vector_ups] = upsampleVector(vector)
     Fs = 1/windowSize;
     Fs_ecg = samplingFreq;
     [P,Q] = rat(Fs_ecg/Fs);
-%    vector_ups = resample(vector,P,Q);
-     upsampleFactor = Fs_ecg/Fs;
-     vector_ups = upsample(vector,upsampleFactor);
+    vector_ups = resample(vector,P,Q);
+%     upsampleFactor = Fs_ecg/Fs;
+%     vector_ups = upsample(vector,upsampleFactor);
    
 
 end
