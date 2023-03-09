@@ -1,4 +1,4 @@
 
 function originalFS = originalFS
-        originalFS = 1000;
+        originalFS = 500;
 end

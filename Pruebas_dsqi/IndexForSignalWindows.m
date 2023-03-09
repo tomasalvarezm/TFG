@@ -1,10 +1,15 @@
 
 %calculate the index for windows of 4 seconds
-function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = IndexForSignalWindows(ECG)
+function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = IndexForSignalWindows(ECG)
+%       ecg = importdata(ECG);
+%       ecg_values = ecg.data;
+%       data = ecg_values(:,3);
+
+      %coger los datos de ECG de physionet
       ecg = importdata(ECG);
-      ecg_values = ecg.data;
-      data = ecg_values(:,3);
-      
+      leadNumber = 10; %desde 2 hasta 13
+      data = ecg(:,leadNumber);
+
       FS_original = originalFS;
       Fs_new = samplingFreq;
       [P,Q] = rat(Fs_new/FS_original);
@@ -17,6 +22,7 @@ function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector, cSQI_01_vector, basSQI_
       kSQI_01_vector =zeros(1,size_vector);
       sSQI_01_vector= zeros(1,size_vector);
       pSQI_01_vector = zeros(1,size_vector);
+      rel_powerLine01_vector = zeros(1,size_vector);
       cSQI_01_vector = zeros(1,size_vector);
       basSQI_01_vector = zeros(1,size_vector);
       dSQI_01_vector = zeros(1,size_vector);
@@ -54,6 +60,7 @@ function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector, cSQI_01_vector, basSQI_
          kSQI_01_vector(i) = kSQI_01; 
          sSQI_01_vector(i) = sSQI_01;
          pSQI_01_vector(i) = pSQI_01;
+         rel_powerLine01_vector(i) = SQI_rel_powerLine_01;
          cSQI_01_vector(i) = cSQI_01;
          basSQI_01_vector(i) = basSQI_01;
          geometricMean_vector(i) = geometricMean;
@@ -65,6 +72,7 @@ function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector, cSQI_01_vector, basSQI_
           kurtosis_vector_ups = upsampleVector(kSQI_01_vector);
           skewness_vector_ups = upsampleVector(sSQI_01_vector);
           power_vector_ups = upsampleVector(pSQI_01_vector);
+          relPowerLine_vector_ups = upsampleVector(rel_powerLine01_vector);
           var_vector_ups = upsampleVector(cSQI_01_vector);
           bas_vector_ups = upsampleVector(basSQI_01_vector);
           geometricMean_vector_ups = upsampleVector(geometricMean_vector);
@@ -91,6 +99,12 @@ function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector, cSQI_01_vector, basSQI_
           figure
           plot(data_s);
           hold on;
+          plot(relPowerLine_vector_ups*(50000/mean(rel_powerLine01_vector)))
+          title("ECG+Relative PowerLine")
+
+          figure
+          plot(data_s);
+          hold on;
           plot(var_vector_ups*(50000/mean(cSQI_01_vector)));
           title("ECG+R-RVariability");
 
@@ -112,7 +126,7 @@ end
 function [vector_ups] = upsampleVector(vector)
     Fs = 1/windowSize;
     Fs_ecg = samplingFreq;
-    [P,Q] = rat(Fs_ecg/Fs);
+%    [P,Q] = rat(Fs_ecg/Fs);
 %    vector_ups = resample(vector,P,Q);
      upsampleFactor = Fs_ecg/Fs;
      vector_ups = upsample(vector,upsampleFactor);
