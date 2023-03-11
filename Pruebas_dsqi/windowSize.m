@@ -1,6 +1,6 @@
 
 function window_size = windowSize 
 
-window_size = 9.5;
+window_size = 10;
 
 end 

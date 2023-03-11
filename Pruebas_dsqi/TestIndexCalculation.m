@@ -4,7 +4,7 @@
 
 
 %for complete signal
-[kSQI_01,sSQI_01, pSQI_01, SQI_rel_powerLine_01,cSQI_01, basSQI_01,dSQI_01,geometricMean,averageIndex] = IndexForCompleteSignal("1354265_unacceptable.txt");
+[kSQI_01,sSQI_01, pSQI_01, SQI_rel_powerLine_01,cSQI_01, basSQI_01,dSQI_01,geometricMean,averageIndex] = IndexForCompleteSignal("ECGNormal.txt");
 %[kSQI_01,sSQI_01, pSQI_01, cSQI_01, basSQI_01,dSQI_01,geometricMean] = IndexForCompleteSignal("ECGRuido.txt");
 %[kSQI_01,sSQI_01, pSQI_01, cSQI_01, basSQI_01,dSQI_01,geometricMean] = IndexForCompleteSignal("ECGRuido2.txt");
 %[kSQI_01,sSQI_01, pSQI_01, cSQI_01, basSQI_01,dSQI_01,geometricMean] = IndexForCompleteSignal("ECGRuido3.txt");

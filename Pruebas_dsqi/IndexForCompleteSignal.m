@@ -2,14 +2,14 @@
 
 function [kSQI_01,sSQI_01, pSQI_01, SQI_rel_powerLine_01,cSQI_01, basSQI_01,dSQI_01,geometricMean,averageIndex] = IndexForCompleteSignal(ECG)
 
-%       ecg = importdata(ECG);
-%       ecg_values = ecg.data;
-%       data = ecg_values(:,3);
+      ecg = importdata(ECG);
+      ecg_values = ecg.data;
+      data = ecg_values(:,3);
 
       %para coger datos de archivos de Physionet Challenge 2011
-      ecg = importdata(ECG);
-      leadNumber = 2;
-      data = ecg(:,leadNumber);
+%       ecg = importdata(ECG);
+%       leadNumber = 2;
+%       data = ecg(:,leadNumber);
       
       
       FS_original = originalFS;
