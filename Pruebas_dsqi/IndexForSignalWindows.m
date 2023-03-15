@@ -1,16 +1,19 @@
 
 %calculate the index for windows of 4 seconds
 function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = IndexForSignalWindows(ECG)
-%       ecg = importdata(ECG);
-%       ecg_values = ecg.data;
-%       data = ecg_values(:,3);
 
-      %coger los datos de ECG de physionet
-      ecg = importdata(ECG);
-      leadNumber = 10; %desde 2 hasta 13
-      data = ecg(:,leadNumber);
+     prompt = "If your data is from Bitalino, enter 1, if it is from physionet, enter 2\n ";
+     x = input(prompt);
 
-      FS_original = originalFS;
+     if x == 1
+        data = ImportBitalinoData(ECG);
+        FS_original = originalFSBitalino;
+     else 
+        data = ImportPhysionetData(ECG);
+        FS_original = originalFSPhysionet;
+     end
+
+     
       Fs_new = samplingFreq;
       [P,Q] = rat(Fs_new/FS_original);
       data_s = resample(data,P,Q);
