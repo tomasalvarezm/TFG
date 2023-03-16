@@ -19,7 +19,13 @@ function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, 
       dSQI_01_vector = zeros(1,size_vector);
       geometricMean_vector = zeros(1,size_vector);
 
-      [qrs,varargout] = pantompkins_qrs(data_s,samplingFreq,logical(0)); 
+      try
+   [qrs,varargout] = pantompkins_qrs(data_s,samplingFreq,logical(0)); 
+    catch exception
+        averageGeometricMean = 0;
+     return; % all zeros
+    end
+      
       qrs_seconds = qrs/samplingFreq;
       qrs_len = length(qrs_seconds);
       qrs_window = [];
