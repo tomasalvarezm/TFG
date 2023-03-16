@@ -13,29 +13,33 @@ end
 
 function[rel_power] = relativePower(data)
      freqrange1 = [5,15];
-     freqrange2 = [5,40];
+     freqrange2 = [5,samplingFreq/2-1];
      p1 = bandpower(data,samplingFreq,freqrange1);
      p2 =  bandpower(data,samplingFreq,freqrange2);
      rel_power = p1/p2;
-
 end
 
 function[rel_powerLine] = relPowerlinePower(data)
      freqrange1 = [45, 60];
-     freqrange2 = [5,40];
+     freqrange2 = [5,15];
      p1 = bandpower(data,samplingFreq,freqrange1);
      p2 =  bandpower(data,samplingFreq,freqrange2);
      rel_powerLine = p1/p2;
+     %00,016 bueno
 
 end
 
 function[var_RR] = variability_RR(qrs_vector)
     
-    len = length(qrs_vector);
-    vector_RR= qrs_vector(2:len)-qrs_vector(1:(len-1)); %esto ya está en segundos y no en muestras
-    %vector_RR_seconds = vector_RR/samplingFreq;
-    vector_RR_ms = vector_RR*1;
-    var_RR = std(vector_RR_ms)/mean(vector_RR_ms);
+    if (length(qrs_vector) <5 ) %if less than 5 beats in 10 seconds
+        var_RR =1; % = score of 0 for the index        
+    else
+        len = length(qrs_vector);
+        vector_RR= qrs_vector(2:len)-qrs_vector(1:(len-1)); %esto ya está en segundos y no en muestras
+        %vector_RR_seconds = vector_RR/samplingFreq;
+        vector_RR_ms = vector_RR*1;
+        var_RR = std(vector_RR_ms)/mean(vector_RR_ms);
+    end
 end
 
 

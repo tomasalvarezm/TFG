@@ -1,7 +1,6 @@
 
-function [ECGmv_Physionet] = ImportPhysionetData(ECG)
-      ecg = importdata(ECG);
-      leadNumber = 2;
+function [ECGmv_Physionet] = ImportPhysionetData(fileName, leadNumber)
+      ecg = importdata(fileName);
       data = ecg(:,leadNumber);
 
       %transform to mv

@@ -1,6 +1,6 @@
 
-function [ECGmv_Bitalino] = ImportBitalinoData(ECG)
-  ecg = importdata(ECG);
+function [ECGmv_Bitalino] = ImportBitalinoData(fileName)
+  ecg = importdata(fileName);
   ecg_values = ecg.data;
   data = ecg_values(:,3);
 

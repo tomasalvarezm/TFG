@@ -286,6 +286,7 @@ if (learned ~= 0)
 end
 
 if (learned == 0)
+    %@TODO hhaccer algo con esto.  Archivo ECGFlatline
     warning(['QRS-detection learning phase of dataset ' str_ident ' was not successful.']);
     return
 end

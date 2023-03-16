@@ -1,18 +1,6 @@
 
 %calculate the index for windows of 4 seconds
-function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = IndexForSignalWindows(ECG)
-
-     prompt = "If your data is from Bitalino, enter 1, if it is from physionet, enter 2\n ";
-     x = input(prompt);
-
-     if x == 1
-        data = ImportBitalinoData(ECG);
-        FS_original = originalFSBitalino;
-     else 
-        data = ImportPhysionetData(ECG);
-        FS_original = originalFSPhysionet;
-     end
-
+function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = IndexForSignalWindows(data, FS_original)
      
       Fs_new = samplingFreq;
       [P,Q] = rat(Fs_new/FS_original);
@@ -38,8 +26,8 @@ function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, 
 
       for i=1:floor(len/window_len)
           
-         data_f=data_s((i-1)*(window_len)+1:i*(window_len)+1);
-         plot(data_f);
+         data_f=data_s((i-1)*(window_len)+1:i*(window_len));
+
          for j=1:(qrs_len-1)
              if qrs_seconds(j) >= ((i-1)*windowSize) && qrs_seconds(j)< (i*windowSize)
                  qrs_window(end+1) = qrs_seconds(j);
@@ -52,11 +40,17 @@ function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, 
          [total_dSQI, cont_dSQI, s_dSQI] = dsqi(data_f, samplingFreq);
          [kSQI_01,sSQI_01, pSQI_01, SQI_rel_powerLine_01, cSQI_01, basSQI_01,dSQI_01,geometricMean] = AssignValueToIndexes(kSQI,sSQI, pSQI, rel_powerLine, cSQI,basSQI,total_dSQI);
 
-         fprintf('%.2f ', [kSQI_01, sSQI_01, pSQI_01, SQI_rel_powerLine_01, cSQI_01, basSQI_01, dSQI_01, geometricMean]);
-         fprintf("\n");
+         if(showDebugData)
+            fprintf('%.2f ', [kSQI_01, sSQI_01, pSQI_01, SQI_rel_powerLine_01, cSQI_01, basSQI_01, dSQI_01, geometricMean]);
+            fprintf("\n");
+            plot(data_f);
+            pause(1);         
         
-         if(geometricMean < 0.8)
+            if(geometricMean < 0.8)
                       fprintf("\n");
+            elseif(geometricMean > 0.95)
+                      fprintf("\n");
+            end
          end
 
          %metemos el valor en cada uno de los vectores 

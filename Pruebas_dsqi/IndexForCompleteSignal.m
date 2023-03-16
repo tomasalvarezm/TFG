@@ -1,19 +1,7 @@
 %calculate index for the complete signal 
 
-function [kSQI_01,sSQI_01, pSQI_01, SQI_rel_powerLine_01,cSQI_01, basSQI_01,dSQI_01,geometricMean,averageIndex] = IndexForCompleteSignal(ECG)
+function [kSQI_01,sSQI_01, pSQI_01, SQI_rel_powerLine_01,cSQI_01, basSQI_01,dSQI_01,geometricMean,averageIndex] = IndexForCompleteSignal(data, FS_original)
      
-     prompt = "If your data is from Bitalino, enter 1, if it is from physionet, enter 2\n ";
-   
-     x = input(prompt);
-
-     if x == 1
-        data = ImportBitalinoData(ECG);
-        FS_original = originalFSBitalino;
-     elseif x == 2
-        data = ImportPhysionetData(ECG);
-        FS_original = originalFSPhysionet;
-     end
-   
       Fs_new = samplingFreq;
       [P,Q] = rat(Fs_new/FS_original);
       data_s = resample(data,P,Q);
