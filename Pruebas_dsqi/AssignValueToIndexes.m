@@ -82,7 +82,7 @@ function [kSQI_01,sSQI_01, pSQI_01, SQI_rel_powerLine_01, cSQI_01, basSQI_01,dSQ
 
    % exponet m_order
    m_order=2;
-   index_product = kSQI_01*pSQI_01^3*SQI_rel_powerLine_01*cSQI_01*basSQI_01^2*dSQI_01;
+   index_product = kSQI_01*pSQI_01^3*SQI_rel_powerLine_01^2*cSQI_01*basSQI_01^2*dSQI_01;
    geometricMean = (index_product)^(1/(6));
 end
 
