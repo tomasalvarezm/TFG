@@ -1,13 +1,13 @@
 
 %calcular kurtosis(KSQI), skewness(sSQI), potencia en QRS(pSQI),
 %variabilidad entre intervalos R-R(cSQI) y potencia en baseline(basSQI)
-function [kSQI,sSQI, pSQI, rel_powerLine, cSQI, basSQI] = IndexCalculation(data_s,qrs_vector)
+function [kSQI,sSQI, pSQI, rel_powerLine, cSQI, basSQI] = IndexCalculation(data_s,qrs_vector, noRR)
 
       kSQI = kurtosis(data_s); %kurtosis
       sSQI = skewness(data_s); %skewness
       pSQI = relativePower(data_s); %relative power in QRS
       rel_powerLine = relPowerlinePower(data_s);
-      cSQI = variability_RR(qrs_vector); %variability in the R-R interval
+      cSQI = variability_RR(qrs_vector, noRR); %variability in the R-R interval
       basSQI = baseline_drift(data_s); %relative power in the baseline
 end 
 
@@ -29,7 +29,11 @@ function[rel_powerLine] = relPowerlinePower(data)
 
 end
 
-function[var_RR] = variability_RR(qrs_vector)
+function[var_RR] = variability_RR(qrs_vector, noRR)
+    if(noRR)
+        var_RR = 1000; %coul not compute; will force minimum value on value assignment in AssignValueToIndexes
+        return
+    end
     
     if (length(qrs_vector) <5 ) %if less than 5 beats in 10 seconds
         var_RR =1; % = score of 0 for the index        

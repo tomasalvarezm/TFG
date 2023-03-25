@@ -19,13 +19,19 @@ function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, 
       dSQI_01_vector = zeros(1,size_vector);
       geometricMean_vector = zeros(1,size_vector);
 
-      try
-   [qrs,varargout] = pantompkins_qrs(data_s,samplingFreq,logical(0)); 
+    try
+         [qrs,varargout] = pantompkins_qrs(data_s,samplingFreq,logical(0)); 
     catch exception
-        averageGeometricMean = 0;
-     return; % all zeros
+        qrs=[0];%no qrs 
     end
       
+    if (length(qrs) <= 1)
+        noRR = 1;
+    else
+        noRR = 0;
+    end
+
+
       qrs_seconds = qrs/samplingFreq;
       qrs_len = length(qrs_seconds);
       qrs_window = [];
@@ -34,16 +40,30 @@ function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, 
           
          data_f=data_s((i-1)*(window_len)+1:i*(window_len));
 
+       if(noRR==0)
          for j=1:(qrs_len-1)
              if qrs_seconds(j) >= ((i-1)*windowSize) && qrs_seconds(j)< (i*windowSize)
                  qrs_window(end+1) = qrs_seconds(j);
              end
          end
+       end
      
          %calculamos los índices y le asignamos un valor entreo 0.1 y 1.
          %También la media geométrica 
-         [kSQI,sSQI, pSQI, rel_powerLine, cSQI,basSQI] = IndexCalculation(data_f,qrs_window);
-         [total_dSQI, cont_dSQI, s_dSQI] = dsqi( data_f, samplingFreq);
+         [kSQI,sSQI, pSQI, rel_powerLine, cSQI,basSQI] = IndexCalculation(data_f,qrs_window, noRR);
+
+         if (noRR == 0)
+             try
+                [total_dSQI, cont_dSQI, s_dSQI] = dsqi( data_f, samplingFreq);
+             catch exception
+                total_dSQI = 0; %coul not compute; will force minimum value on value assignment in AssignValueToIndexes
+            end
+           
+         else
+             total_dSQI = 0; %coul not compute; will force minimum value on value assignment in AssignValueToIndexes
+         end
+
+         
          [kSQI_01,sSQI_01, pSQI_01, SQI_rel_powerLine_01, cSQI_01, basSQI_01,dSQI_01,geometricMean] = AssignValueToIndexes(kSQI,sSQI, pSQI, rel_powerLine, cSQI,basSQI,total_dSQI);
 
          if (i==1885)
@@ -52,9 +72,11 @@ function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, 
 
          if(showDebugData)
             fprintf('It: %i', i);
-            fprintf(', %.2f ', [kSQI_01, sSQI_01, pSQI_01, SQI_rel_powerLine_01, cSQI_01, basSQI_01, dSQI_01, geometricMean]);
+            fprintf(', %.2f ', [kSQI_01, pSQI_01, SQI_rel_powerLine_01, basSQI_01, cSQI_01, dSQI_01, geometricMean]);
+            tit= sprintf('kSQI: %.2f, pSQI: %.2f, rel_powerLine: %.2f, basSQI: %.2f, cSQI: %.2f, dSQI: %.2f, geometricMean: %.2f ', [kSQI_01, pSQI_01, SQI_rel_powerLine_01, basSQI_01, cSQI_01, dSQI_01, geometricMean]);
             fprintf("\n");
             plot(data_f);
+            title(tit);
            pause(1);         
         
             if(geometricMean < 0.9)

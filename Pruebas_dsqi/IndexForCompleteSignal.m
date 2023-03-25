@@ -10,7 +10,14 @@ function [kSQI_01,sSQI_01, pSQI_01, SQI_rel_powerLine_01,cSQI_01, basSQI_01,dSQI
       if(showPlots)
           plot(data_s);
       end
-      [kSQI,sSQI, pSQI, rel_powerLine,cSQI,basSQI] = IndexCalculation(data_s,qrs_seconds); %index calculation
+
+      if (length(qrs) <= 1)
+        noRR = 1;
+      else
+        noRR = 0;
+      end
+      
+      [kSQI,sSQI, pSQI, rel_powerLine,cSQI,basSQI] = IndexCalculation(data_s,qrs_seconds, noRR); %index calculation
       [total_dSQI, cont_dSQI, s_dSQI] = dsqi(data_s, samplingFreq); %calculate dSQI
       [kSQI_01,sSQI_01, pSQI_01, SQI_rel_powerLine_01,cSQI_01, basSQI_01,dSQI_01,geometricMean] = AssignValueToIndexes(kSQI,sSQI,pSQI, rel_powerLine,cSQI,basSQI,total_dSQI); %translate index value to a value between 0.1 and 1
       indexes = [kSQI_01,sSQI_01,pSQI_01,SQI_rel_powerLine_01,cSQI_01,basSQI_01,dSQI_01];
