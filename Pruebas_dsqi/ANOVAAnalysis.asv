@@ -121,3 +121,11 @@ grupo = [repmat('T1',length(T1_a_ANOVA),1);repmat('T2',length(T2_a_ANOVA),1);rep
 p_andando = anova1([T1_a_ANOVA,T2_a_ANOVA,T3_a_ANOVA],grupo,"off");
 
 %registros escaleras 
+T1_esclaeras = {data_andando_T1_top,data_andando_T1_camiseta,data_andando_T1_pantalon};
+n = length(T1_andando);
+indexes_andandoT1 = cell(1,n);
+for i=1:n
+    data = T1_andando{i};
+    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = IndexForSignalWindows(data, originalFSBitalino);
+    indexes_andandoT1{i} = geometricMean_vector;
+end

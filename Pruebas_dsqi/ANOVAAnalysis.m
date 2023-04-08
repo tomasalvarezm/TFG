@@ -85,6 +85,7 @@ T2_t_ANOVA = cell2mat(indexes_trabajandoT2);
 T3_t_ANOVA = cell2mat(indexes_trabajandoT3);
 grupo = [repmat('T1',length(T1_t_ANOVA),1);repmat('T2',length(T2_t_ANOVA),1);repmat('T3',length(T3_t_ANOVA),1)];
 p_trabajando = anova1([T1_t_ANOVA,T2_t_ANOVA,T3_t_ANOVA],grupo,"off");
+%p_trabajando_r = round(p_trabajando,5);
 
 %registros andando 
 T1_andando = {data_andando_T1_top,data_andando_T1_camiseta,data_andando_T1_pantalon};
@@ -119,5 +120,39 @@ T2_a_ANOVA = cell2mat(indexes_andandoT2);
 T3_a_ANOVA = cell2mat(indexes_andandoT3);
 grupo = [repmat('T1',length(T1_a_ANOVA),1);repmat('T2',length(T2_a_ANOVA),1);repmat('T3',length(T3_a_ANOVA),1)];
 p_andando = anova1([T1_a_ANOVA,T2_a_ANOVA,T3_a_ANOVA],grupo,"off");
+%p_andando_r = round(p_andando,5);
 
 %registros escaleras 
+T1_escaleras = {data_escaleras_T1_top,data_escaleras_T1_camiseta,data_escaleras_T1_pantalon};
+n = length(T1_escaleras);
+indexes_escalerasT1 = cell(1,n);
+for i=1:n
+    data = T1_escaleras{i};
+    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = IndexForSignalWindows(data, originalFSBitalino);
+    indexes_escalerasT1{i} = geometricMean_vector;
+end
+
+T2_escaleras = {data_escaleras_T2_top,data_escaleras_T2_camiseta,data_escaleras_T2_pantalon};
+n = length(T2_escaleras);
+indexes_escalerasT2 = cell(1,n);
+for i=1:n
+    data = T2_escaleras{i};
+    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = IndexForSignalWindows(data, originalFSBitalino);
+    indexes_escalerasT2{i} = geometricMean_vector;
+end
+
+T3_escaleras = {data_escaleras_T3_top,data_escaleras_T3_camiseta,data_escaleras_T3_pantalon};
+n = length(T3_escaleras);
+indexes_escalerasT3 = cell(1,n);
+for i=1:n
+    data = T3_escaleras{i};
+    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = IndexForSignalWindows(data, originalFSBitalino);
+    indexes_escalerasT3{i} = geometricMean_vector;
+end
+
+T1_e_ANOVA = cell2mat(indexes_escalerasT1);
+T2_e_ANOVA = cell2mat(indexes_escalerasT2);
+T3_e_ANOVA = cell2mat(indexes_escalerasT3);
+grupo = [repmat('T1',length(T1_e_ANOVA),1);repmat('T2',length(T2_e_ANOVA),1);repmat('T3',length(T3_e_ANOVA),1)];
+p_escaleras = anova1([T1_e_ANOVA,T2_e_ANOVA,T3_e_ANOVA],grupo,"off");
+%p_escaleras_r = round(p_escaleras,5);
