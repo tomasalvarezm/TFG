@@ -1,4 +1,6 @@
 
+% fileName = "ANOVAAnalysis.txt";
+% ANOVAFile = fopen(fileName,'w+');
 %Test1 
 data_T1_top = ImportDataMultipleChannels('Test1.txt',3);
 data_trabajando_T1_top = data_T1_top(1*60*1000+1:9*60*1000);
@@ -47,8 +49,6 @@ data_escaleras_T3_pantalon = data_T3_pantalon(1*60*1000+1:9*60*1000);
 data_trabajando_T3_pantalon = data_T3_pantalon(11*60*1000+1:19*60*1000);
 data_andando_T3_pantalon = data_T3_pantalon(21*60*1000+1:29*60*1000);
 
-%ANOVA para cada una de las actividades 
-
 %registros trabajando 
 T1_trabajando = {data_trabajando_T1_top,data_trabajando_T1_camiseta,data_trabajando_T1_pantalon};
 n = length(T1_trabajando);
@@ -59,6 +59,10 @@ for i=1:n
     [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = IndexForSignalWindows(data, originalFSBitalino);
     indexes_trabajandoT1{i} = geometricMean_vector;
 end
+
+% fprintf(ANOVAFile,'[');
+% fprintf(ANOVAFile,'%f ',indexes_trabajandoT1{1});
+% fprintf(ANOVAFile,']');
 
 T2_trabajando = {data_trabajando_T2_top,data_trabajando_T2_camiseta,data_trabajando_T2_pantalon};
 n = length(T2_trabajando);
@@ -79,13 +83,6 @@ for i=1:n
     [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = IndexForSignalWindows(data, originalFSBitalino);
     indexes_trabajandoT3{i} = geometricMean_vector;
 end
-
-T1_t_ANOVA = cell2mat(indexes_trabajandoT1);
-T2_t_ANOVA = cell2mat(indexes_trabajandoT2);
-T3_t_ANOVA = cell2mat(indexes_trabajandoT3);
-grupo = [repmat('T1',length(T1_t_ANOVA),1);repmat('T2',length(T2_t_ANOVA),1);repmat('T3',length(T3_t_ANOVA),1)];
-p_trabajando = anova1([T1_t_ANOVA,T2_t_ANOVA,T3_t_ANOVA],grupo,"off");
-%p_trabajando_r = round(p_trabajando,5);
 
 %registros andando 
 T1_andando = {data_andando_T1_top,data_andando_T1_camiseta,data_andando_T1_pantalon};
@@ -115,13 +112,6 @@ for i=1:n
     indexes_andandoT3{i} = geometricMean_vector;
 end
 
-T1_a_ANOVA = cell2mat(indexes_andandoT1);
-T2_a_ANOVA = cell2mat(indexes_andandoT2);
-T3_a_ANOVA = cell2mat(indexes_andandoT3);
-grupo = [repmat('T1',length(T1_a_ANOVA),1);repmat('T2',length(T2_a_ANOVA),1);repmat('T3',length(T3_a_ANOVA),1)];
-p_andando = anova1([T1_a_ANOVA,T2_a_ANOVA,T3_a_ANOVA],grupo,"off");
-%p_andando_r = round(p_andando,5);
-
 %registros escaleras 
 T1_escaleras = {data_escaleras_T1_top,data_escaleras_T1_camiseta,data_escaleras_T1_pantalon};
 n = length(T1_escaleras);
@@ -150,9 +140,55 @@ for i=1:n
     indexes_escalerasT3{i} = geometricMean_vector;
 end
 
-T1_e_ANOVA = cell2mat(indexes_escalerasT1);
-T2_e_ANOVA = cell2mat(indexes_escalerasT2);
-T3_e_ANOVA = cell2mat(indexes_escalerasT3);
-grupo = [repmat('T1',length(T1_e_ANOVA),1);repmat('T2',length(T2_e_ANOVA),1);repmat('T3',length(T3_e_ANOVA),1)];
-p_escaleras = anova1([T1_e_ANOVA,T2_e_ANOVA,T3_e_ANOVA],grupo,"off");
-%p_escaleras_r = round(p_escaleras,5);
+%ANOVA Analysis 
+group_length = 48;
+group = [repmat('T1',group_length,1);repmat('T2',group_length,1);repmat('T3',group_length,1)];
+
+%ANOVA top trabajando
+top_t = [indexes_trabajandoT1{1},indexes_trabajandoT2{1},indexes_trabajandoT3{1}];
+p_top_t = anova1(top_t,group,"off");
+fprintf("P-value para top trabajando: %f\n",p_top_t);
+
+%ANOVA top andando
+top_a = [indexes_andandoT1{1},indexes_andandoT2{1},indexes_andandoT3{1}];
+p_top_a = anova1(top_a,group,"off");
+fprintf("P-value para top andando: %f\n",p_top_a);
+
+%ANOVA top escaleras 
+top_e = [indexes_escalerasT1{1},indexes_escalerasT2{1},indexes_escalerasT3{1}];
+p_top_e = anova1(top_e,group,"off");
+fprintf("P-value para top escaleras: %f\n",p_top_e);
+
+%ANOVA camiseta trabajando
+camiseta_t = [indexes_trabajandoT1{2},indexes_trabajandoT2{2},indexes_trabajandoT3{2}];
+p_camiseta_t = anova1(camiseta_t,group,"off");
+fprintf("P-value para camiseta trabajando: %f\n",p_camiseta_t);
+
+%ANOVA camiseta andando
+camiseta_a = [indexes_andandoT1{2},indexes_andandoT2{2},indexes_andandoT3{2}];
+p_camiseta_a = anova1(camiseta_a,group,"off");
+fprintf("P-value para camiseta andando: %f\n",p_camiseta_a);
+
+%ANOVA camiseta escaleras
+camiseta_e = [indexes_escalerasT1{2},indexes_escalerasT2{2},indexes_escalerasT3{2}];
+p_camiseta_e = anova1(camiseta_e,group,"off");
+fprintf("P-value para camiseta escaleras: %f\n",p_camiseta_e);
+
+%ANOVA pantalón trabajando
+pantalon_t = [indexes_trabajandoT1{3},indexes_trabajandoT2{3},indexes_trabajandoT3{3}];
+p_pantalon_t = anova1(pantalon_t,group,"off");
+fprintf("P-value para pantalon trabajando: %f\n",p_pantalon_t);
+
+%ANOVA pantalón andando
+pantalon_a = [indexes_andandoT1{3},indexes_andandoT2{3},indexes_andandoT3{3}];
+p_pantalon_a = anova1(pantalon_a,group,"off");
+fprintf("P-value para pantalon andando: %f\n",p_pantalon_a);
+
+%ANOVA pantalón escaleras
+pantalon_e = [indexes_escalerasT1{3},indexes_escalerasT2{3},indexes_escalerasT3{3}];
+p_pantalon_e = anova1(pantalon_e,group,"off");
+fprintf("P-value para pantalon escaleras: %f\n",p_pantalon_e);
+
+
+
+
