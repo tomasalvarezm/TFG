@@ -51,7 +51,7 @@ data_andando_T3_pantalon = data_T3_pantalon(21*60*1000+1:29*60*1000);
 
 %[kSQI_01_v,sSQI_01_v, pSQI_01_v, SQI_rel_powerLine_01_v,cSQI_01_v, basSQI_01_v,dSQI_01_v,geometricMean_V,averageGeometricMean] = IndexForSignalWindows(data_trabajando_T1_pantalon, originalFSBitalino);
 
-registros trabajando 
+%registros trabajando 
 T1_trabajando = {data_trabajando_T1_top,data_trabajando_T1_camiseta,data_trabajando_T1_pantalon};
 n = length(T1_trabajando);
 indexes_trabajandoT1 = cell(1,n);

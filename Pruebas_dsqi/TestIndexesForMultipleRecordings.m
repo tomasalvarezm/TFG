@@ -24,7 +24,12 @@
 % end 
 
 %Bitalino recordings with multiple channels 
-files = {'ECG13-03-8H.txt'};
+%files = {'ECG13-03-8H.txt'};
+%files = {'ECG-25-03-8H.txt'};
+%files = {'ECG-28-03-8H.txt'};
+files = {'ECG-30-03-8H.txt'};
+
+
 for i=1:length(files)
     file = files{i};
     for channel = 3:5

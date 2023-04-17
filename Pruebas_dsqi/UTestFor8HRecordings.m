@@ -59,46 +59,63 @@ for i=1:n
     indexes_pantalon{i} = geometricMean_vector;
 end
 
+
+%significance level for calculating the confidence intervals
+alph = 0.01;
+%number of iterations to use in boostrap
+iter = 1000;
+
 %Prueba 1
-[p_topcam_1,U_topcam_1] = Utest(indexes_top{1},indexes_camiseta{1});
-[p_toppant_1,U_toppant_1] = Utest(indexes_top{1},indexes_pantalon{1});
-[p_campant_1,U_campant_1] = Utest(indexes_camiseta{1},indexes_pantalon{1});
+CI_topcam_1 = estimateCIMedian(indexes_top{1},indexes_camiseta{1}, alph, iter);
+CI_toppant_1 = estimateCIMedian(indexes_top{1},indexes_pantalon{1}, alph, iter);
+CI_campant_1 = estimateCIMedian(indexes_camiseta{1},indexes_pantalon{1}, alph, iter);
 
 %Prueba 2
-[p_topcam_2,U_topcam_2] = Utest(indexes_top{2},indexes_camiseta{2});
-[p_toppant_2,U_toppant_2] = Utest(indexes_top{2},indexes_pantalon{2});
-[p_campant_2,U_campant_2] = Utest(indexes_camiseta{2},indexes_pantalon{2});
+CI_topcam_2 = estimateCIMedian(indexes_top{2},indexes_camiseta{2}, alph, iter);
+CI_toppant_2 = estimateCIMedian(indexes_top{2},indexes_pantalon{2}, alph, iter);
+CI_campant_2 = estimateCIMedian(indexes_camiseta{2},indexes_pantalon{2}, alph, iter);
 
 %Prueba 3
-[p_topcam_3,U_topcam_3] = Utest(indexes_top{3},indexes_camiseta{3});
-[p_toppant_3,U_toppant_3] = Utest(indexes_top{3},indexes_pantalon{3});
-[p_campant_3,U_campant_3] = Utest(indexes_camiseta{3},indexes_pantalon{3});
+CI_topcam_3 = estimateCIMedian(indexes_top{3},indexes_camiseta{3}, alph, iter);
+CI_toppant_3 = estimateCIMedian(indexes_top{3},indexes_pantalon{3}, alph, iter);
+CI_campant_3 = estimateCIMedian(indexes_camiseta{3},indexes_pantalon{3}, alph, iter);
 
 %Prueba 4
-[p_topcam_4,U_topcam_4] = Utest(indexes_top{4},indexes_camiseta{4});
-[p_toppant_4,U_toppant_4] = Utest(indexes_top{4},indexes_pantalon{4});
-[p_campant_4,U_campant_4] = Utest(indexes_camiseta{4},indexes_pantalon{4});
+CI_topcam_4 = estimateCIMedian(indexes_top{4},indexes_camiseta{4}, alph, iter);
+CI_toppant_4 = estimateCIMedian(indexes_top{4},indexes_pantalon{4}, alph, iter);
+CI_campant_4 = estimateCIMedian(indexes_camiseta{4},indexes_pantalon{4}, alph, iter);
 
-function [pvalue_vector,U_vector] = Utest(index_vector1,index_vector2)
-nboot = 1;
-pvalue_vector = zeros(0,999);
-U_vector = zeros(0,999);
-for i=1:1000
-    index_vector1_b = bootstrp(nboot,@(x) x,index_vector1);
-    index_vector2_b = bootstrp(nboot,@(x) x, index_vector2);
-    [pval,Uval] = calculateUandP(index_vector1_b,index_vector2_b);
-    pvalue_vector(i) = pval;
-    U_vector(i) = Uval;
-end
-end
+% todas las pruebas
+CI_topcam = estimateCIMedian([indexes_top{1}, indexes_top{2}, indexes_top{3}, indexes_top{4}], [indexes_camiseta{1}, indexes_camiseta{2}, indexes_camiseta{3},indexes_camiseta{4}], alph, iter);
+CI_toppant = estimateCIMedian([indexes_top{1}, indexes_top{2}, indexes_top{3}, indexes_top{4}], [indexes_pantalon{1},indexes_pantalon{2},indexes_pantalon{3},indexes_pantalon{4}], alph, iter);
+CI_campant = estimateCIMedian([indexes_camiseta{1}, indexes_camiseta{2}, indexes_camiseta{3},indexes_camiseta{4}], [indexes_pantalon{1},indexes_pantalon{2},indexes_pantalon{3},indexes_pantalon{4}], alph, iter);
 
-function [pval,Uval] = calculateUandP(v1,v2)
- n = length(v1);
- [p,h,stats] = ranksum(v1,v2);
- pval = p;
- W = stats.ranksum;
- Uval = W - ((n*(n+1))/2);
-end
+
+%Prueba 1
+CI_Mean_topcam_1 = estimateCIMean(indexes_top{1},indexes_camiseta{1}, alph, iter);
+CI_Mean_toppant_1 = estimateCIMean(indexes_top{1},indexes_pantalon{1}, alph, iter);
+CI_Mean_campant_1 = estimateCIMean(indexes_camiseta{1},indexes_pantalon{1}, alph, iter);
+
+%Prueba 2
+CI_Mean_topcam_2 = estimateCIMean(indexes_top{2},indexes_camiseta{2}, alph, iter);
+CI_Mean_toppant_2 = estimateCIMean(indexes_top{2},indexes_pantalon{2}, alph, iter);
+CI_Mean_campant_2 = estimateCIMean(indexes_camiseta{2},indexes_pantalon{2}, alph, iter);
+
+%Prueba 3
+CI_Mean_topcam_3 = estimateCIMean(indexes_top{3},indexes_camiseta{3}, alph, iter);
+CI_Mean_toppant_3 = estimateCIMean(indexes_top{3},indexes_pantalon{3}, alph, iter);
+CI_Mean_campant_3 = estimateCIMean(indexes_camiseta{3},indexes_pantalon{3}, alph, iter);
+
+%Prueba 4
+CI_Mean_topcam_4 = estimateCIMean(indexes_top{4},indexes_camiseta{4}, alph, iter);
+CI_Mean_toppant_4 = estimateCIMean(indexes_top{4},indexes_pantalon{4}, alph, iter);
+CI_Mean_campant_4 = estimateCIMean(indexes_camiseta{4},indexes_pantalon{4}, alph, iter);
+
+% todas las pruebas
+CI_Mean_topcam = estimateCIMean([indexes_top{1}, indexes_top{2}, indexes_top{3}, indexes_top{4}], [indexes_camiseta{1}, indexes_camiseta{2}, indexes_camiseta{3},indexes_camiseta{4}], alph, iter);
+CI_Mean_toppant = estimateCIMean([indexes_top{1}, indexes_top{2}, indexes_top{3}, indexes_top{4}], [indexes_pantalon{1},indexes_pantalon{2},indexes_pantalon{3},indexes_pantalon{4}], alph, iter);
+CI_Mean_campant = estimateCIMean([indexes_camiseta{1}, indexes_camiseta{2}, indexes_camiseta{3},indexes_camiseta{4}], [indexes_pantalon{1},indexes_pantalon{2},indexes_pantalon{3},indexes_pantalon{4}], alph, iter);
+
 
 
 

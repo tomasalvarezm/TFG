@@ -25,6 +25,8 @@ for i = 1:length(files)
     fprintf(acc_file,'%f\n',geo_mean2);
 end 
 
+fclose(acc_file);
+
 %unaceptable
 filename_2 = "UnacceptableFiles.txt";
 unacc_file = fopen(filename_2,'w+');
@@ -53,6 +55,8 @@ for i = 1:length(files)
     fprintf(unacc_file,'%f\n',geo_mean2U);
     %fprintf("\n ");
 end 
+
+fclose(unacc_file);
 
 function [mean_vector01] = changeZeros(mean_vector)
 for i=1:length(mean_vector)
