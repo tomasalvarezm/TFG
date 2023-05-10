@@ -141,97 +141,97 @@ iter = 1000;
 
 %USING MEDIAN
 
-% %top trabajando
-% CIMedian_topTrabajando_T1T2 = estimateCIMedian(indexes_trabajandoT1{1},indexes_trabajandoT2{1},alph,iter);
-% CIMedian_topTrabajando_T1T3 = estimateCIMedian(indexes_trabajandoT1{1},indexes_trabajandoT3{1},alph,iter);
-% CIMedian_topTrabajando_T2T3 = estimateCIMedian(indexes_trabajandoT2{1},indexes_trabajandoT3{1},alph,iter);
-% 
-% %top andando
-% CIMedian_topAndando_T1T2 = estimateCIMedian(indexes_andandoT1{1},indexes_andandoT2{1},alph,iter);
-% CIMedian_topAndando_T1T3 = estimateCIMedian(indexes_andandoT1{1},indexes_andandoT3{1},alph,iter);
-% CIMedian_topAndando_T2T3 = estimateCIMedian(indexes_andandoT2{1},indexes_andandoT3{1},alph,iter);
-% 
-% %top escaleras
-% CIMedian_topEscaleras_T1T2 = estimateCIMedian(indexes_escalerasT1{1},indexes_escalerasT2{1},alph,iter);
-% CIMedian_topEscaleras_T1T3 = estimateCIMedian(indexes_escalerasT1{1},indexes_escalerasT3{1},alph,iter);
-% CIMedian_topEscaleras_T2T3 = estimateCIMedian(indexes_escalerasT2{1},indexes_escalerasT3{1},alph,iter);
-% 
-% %camiseta trabajando
-% CIMedian_camisetaTrabajando_T1T2 = estimateCIMedian(indexes_trabajandoT1{2},indexes_trabajandoT2{2},alph,iter);
-% CIMedian_camisetaTrabajando_T1T3 = estimateCIMedian(indexes_trabajandoT1{2},indexes_trabajandoT3{2},alph,iter);
-% CIMedian_camisetaTrabajando_T2T3 = estimateCIMedian(indexes_trabajandoT2{2},indexes_trabajandoT3{2},alph,iter);
-% 
-% %camiseta andando
-% CIMedian_camisetaAndando_T1T2 = estimateCIMedian(indexes_andandoT1{2},indexes_andandoT2{2},alph,iter);
-% CIMedian_camisetaAndando_T1T3 = estimateCIMedian(indexes_andandoT1{2},indexes_andandoT3{2},alph,iter);
-% CIMedian_camisetaAndando_T2T3 = estimateCIMedian(indexes_andandoT2{2},indexes_andandoT3{2},alph,iter);
-% 
-% %camiseta escaleras
-% CIMedian_camisetaEscaleras_T1T2 = estimateCIMedian(indexes_escalerasT1{2},indexes_escalerasT2{2},alph,iter);
-% CIMedian_camisetaEscaleras_T1T3 = estimateCIMedian(indexes_escalerasT1{2},indexes_escalerasT3{2},alph,iter);
-% CIMedian_camisetaEscaleras_T2T3 = estimateCIMedian(indexes_escalerasT2{2},indexes_escalerasT3{2},alph,iter);
-% 
-% %pantalon trabajando
-% CIMedian_pantTrabajando_T1T2 = estimateCIMedian(indexes_trabajandoT1{3},indexes_trabajandoT2{3},alph,iter);
-% CIMedian_pantTrabajando_T1T3 = estimateCIMedian(indexes_trabajandoT1{3},indexes_trabajandoT3{3},alph,iter);
-% CIMedian_pantTrabajando_T2T3 = estimateCIMedian(indexes_trabajandoT2{3},indexes_trabajandoT3{3},alph,iter);
-% 
-% %pantalon andando
-% CIMedian_pantAndando_T1T2 = estimateCIMedian(indexes_andandoT1{3},indexes_andandoT2{3},alph,iter);
-% CIMedian_pantAndando_T1T3 = estimateCIMedian(indexes_andandoT1{3},indexes_andandoT3{3},alph,iter);
-% CIMedian_pantAndando_T2T3 = estimateCIMedian(indexes_andandoT2{3},indexes_andandoT3{3},alph,iter);
-% 
-% %pantalon escaleras
-% CIMedian_pantEscaleras_T1T2 = estimateCIMedian(indexes_escalerasT1{3},indexes_escalerasT2{3},alph,iter);
-% CIMedian_pantEscaleras_T1T3 = estimateCIMedian(indexes_escalerasT1{3},indexes_escalerasT3{3},alph,iter);
-% CIMedian_pantEscaleras_T2T3 = estimateCIMedian(indexes_escalerasT2{3},indexes_escalerasT3{3},alph,iter);
-% 
+%top trabajando
+CIMedian_topTrabajando_T1T2 = estimateCIMedian(indexes_trabajandoT1{1},indexes_trabajandoT2{1},alph,iter);
+CIMedian_topTrabajando_T1T3 = estimateCIMedian(indexes_trabajandoT1{1},indexes_trabajandoT3{1},alph,iter);
+CIMedian_topTrabajando_T2T3 = estimateCIMedian(indexes_trabajandoT2{1},indexes_trabajandoT3{1},alph,iter);
+
+%top andando
+CIMedian_topAndando_T1T2 = estimateCIMedian(indexes_andandoT1{1},indexes_andandoT2{1},alph,iter);
+CIMedian_topAndando_T1T3 = estimateCIMedian(indexes_andandoT1{1},indexes_andandoT3{1},alph,iter);
+CIMedian_topAndando_T2T3 = estimateCIMedian(indexes_andandoT2{1},indexes_andandoT3{1},alph,iter);
+
+%top escaleras
+CIMedian_topEscaleras_T1T2 = estimateCIMedian(indexes_escalerasT1{1},indexes_escalerasT2{1},alph,iter);
+CIMedian_topEscaleras_T1T3 = estimateCIMedian(indexes_escalerasT1{1},indexes_escalerasT3{1},alph,iter);
+CIMedian_topEscaleras_T2T3 = estimateCIMedian(indexes_escalerasT2{1},indexes_escalerasT3{1},alph,iter);
+
+%camiseta trabajando
+CIMedian_camisetaTrabajando_T1T2 = estimateCIMedian(indexes_trabajandoT1{2},indexes_trabajandoT2{2},alph,iter);
+CIMedian_camisetaTrabajando_T1T3 = estimateCIMedian(indexes_trabajandoT1{2},indexes_trabajandoT3{2},alph,iter);
+CIMedian_camisetaTrabajando_T2T3 = estimateCIMedian(indexes_trabajandoT2{2},indexes_trabajandoT3{2},alph,iter);
+
+%camiseta andando
+CIMedian_camisetaAndando_T1T2 = estimateCIMedian(indexes_andandoT1{2},indexes_andandoT2{2},alph,iter);
+CIMedian_camisetaAndando_T1T3 = estimateCIMedian(indexes_andandoT1{2},indexes_andandoT3{2},alph,iter);
+CIMedian_camisetaAndando_T2T3 = estimateCIMedian(indexes_andandoT2{2},indexes_andandoT3{2},alph,iter);
+
+%camiseta escaleras
+CIMedian_camisetaEscaleras_T1T2 = estimateCIMedian(indexes_escalerasT1{2},indexes_escalerasT2{2},alph,iter);
+CIMedian_camisetaEscaleras_T1T3 = estimateCIMedian(indexes_escalerasT1{2},indexes_escalerasT3{2},alph,iter);
+CIMedian_camisetaEscaleras_T2T3 = estimateCIMedian(indexes_escalerasT2{2},indexes_escalerasT3{2},alph,iter);
+
+%pantalon trabajando
+CIMedian_pantTrabajando_T1T2 = estimateCIMedian(indexes_trabajandoT1{3},indexes_trabajandoT2{3},alph,iter);
+CIMedian_pantTrabajando_T1T3 = estimateCIMedian(indexes_trabajandoT1{3},indexes_trabajandoT3{3},alph,iter);
+CIMedian_pantTrabajando_T2T3 = estimateCIMedian(indexes_trabajandoT2{3},indexes_trabajandoT3{3},alph,iter);
+
+%pantalon andando
+CIMedian_pantAndando_T1T2 = estimateCIMedian(indexes_andandoT1{3},indexes_andandoT2{3},alph,iter);
+CIMedian_pantAndando_T1T3 = estimateCIMedian(indexes_andandoT1{3},indexes_andandoT3{3},alph,iter);
+CIMedian_pantAndando_T2T3 = estimateCIMedian(indexes_andandoT2{3},indexes_andandoT3{3},alph,iter);
+
+%pantalon escaleras
+CIMedian_pantEscaleras_T1T2 = estimateCIMedian(indexes_escalerasT1{3},indexes_escalerasT2{3},alph,iter);
+CIMedian_pantEscaleras_T1T3 = estimateCIMedian(indexes_escalerasT1{3},indexes_escalerasT3{3},alph,iter);
+CIMedian_pantEscaleras_T2T3 = estimateCIMedian(indexes_escalerasT2{3},indexes_escalerasT3{3},alph,iter);
+
 % %USING MEAN 
-% 
-% %top trabajando
-% CIMean_topTrabajando_T1T2 = estimateCIMean(indexes_trabajandoT1{1},indexes_trabajandoT2{1},alph,iter);
-% CIMean_topTrabajando_T1T3 = estimateCIMean(indexes_trabajandoT1{1},indexes_trabajandoT3{1},alph,iter);
-% CIMean_topTrabajando_T2T3 = estimateCIMean(indexes_trabajandoT2{1},indexes_trabajandoT3{1},alph,iter);
-% 
-% %top andando
-% CIMean_topAndando_T1T2 = estimateCIMean(indexes_andandoT1{1},indexes_andandoT2{1},alph,iter);
-% CIMean_topAndando_T1T3 = estimateCIMean(indexes_andandoT1{1},indexes_andandoT3{1},alph,iter);
-% CIMean_topAndando_T2T3 = estimateCIMean(indexes_andandoT2{1},indexes_andandoT3{1},alph,iter);
-% 
-% %top escaleras
-% CIMean_topEscaleras_T1T2 = estimateCIMean(indexes_escalerasT1{1},indexes_escalerasT2{1},alph,iter);
-% CIMean_topEscaleras_T1T3 = estimateCIMean(indexes_escalerasT1{1},indexes_escalerasT3{1},alph,iter);
-% CIMean_topEscaleras_T2T3 = estimateCIMean(indexes_escalerasT2{1},indexes_escalerasT3{1},alph,iter);
-% 
-% %camiseta trabajando
-% CIMean_camisetaTrabajando_T1T2 = estimateCIMean(indexes_trabajandoT1{2},indexes_trabajandoT2{2},alph,iter);
-% CIMean_camisetaTrabajando_T1T3 = estimateCIMean(indexes_trabajandoT1{2},indexes_trabajandoT3{2},alph,iter);
-% CIMean_camisetaTrabajando_T2T3 = estimateCIMean(indexes_trabajandoT2{2},indexes_trabajandoT3{2},alph,iter);
-% 
-% %camiseta andando
-% CIMean_camisetaAndando_T1T2 = estimateCIMean(indexes_andandoT1{2},indexes_andandoT2{2},alph,iter);
-% CIMean_camisetaAndando_T1T3 = estimateCIMean(indexes_andandoT1{2},indexes_andandoT3{2},alph,iter);
-% CIMean_camisetaAndando_T2T3 = estimateCIMean(indexes_andandoT2{2},indexes_andandoT3{2},alph,iter);
-% 
-% %camiseta escaleras
-% CIMean_camisetaEscaleras_T1T2 = estimateCIMean(indexes_escalerasT1{2},indexes_escalerasT2{2},alph,iter);
-% CIMean_camisetaEscaleras_T1T3 = estimateCIMean(indexes_escalerasT1{2},indexes_escalerasT3{2},alph,iter);
-% CIMean_camisetaEscaleras_T2T3 = estimateCIMean(indexes_escalerasT2{2},indexes_escalerasT3{2},alph,iter);
-% 
-% %pantalon trabajando
-% CIMean_pantTrabajando_T1T2 = estimateCIMean(indexes_trabajandoT1{3},indexes_trabajandoT2{3},alph,iter);
-% CIMean_pantTrabajando_T1T3 = estimateCIMean(indexes_trabajandoT1{3},indexes_trabajandoT3{3},alph,iter);
-% CIMean_pantTrabajando_T2T3 = estimateCIMean(indexes_trabajandoT2{3},indexes_trabajandoT3{3},alph,iter);
-% 
-% %pantalon andando
-% CIMean_pantAndando_T1T2 = estimateCIMean(indexes_andandoT1{3},indexes_andandoT2{3},alph,iter);
-% CIMean_pantAndando_T1T3 = estimateCIMean(indexes_andandoT1{3},indexes_andandoT3{3},alph,iter);
-% CIMean_pantAndando_T2T3 = estimateCIMean(indexes_andandoT2{3},indexes_andandoT3{3},alph,iter);
-% 
-% %pantalon escaleras
-% CIMean_pantEscaleras_T1T2 = estimateCIMean(indexes_escalerasT1{3},indexes_escalerasT2{3},alph,iter);
-% CIMean_pantEscaleras_T1T3 = estimateCIMean(indexes_escalerasT1{3},indexes_escalerasT3{3},alph,iter);
-% CIMean_pantEscaleras_T2T3 = estimateCIMean(indexes_escalerasT2{3},indexes_escalerasT3{3},alph,iter);
+
+%top trabajando
+CIMean_topTrabajando_T1T2 = estimateCIMean(indexes_trabajandoT1{1},indexes_trabajandoT2{1},alph,iter);
+CIMean_topTrabajando_T1T3 = estimateCIMean(indexes_trabajandoT1{1},indexes_trabajandoT3{1},alph,iter);
+CIMean_topTrabajando_T2T3 = estimateCIMean(indexes_trabajandoT2{1},indexes_trabajandoT3{1},alph,iter);
+
+%top andando
+CIMean_topAndando_T1T2 = estimateCIMean(indexes_andandoT1{1},indexes_andandoT2{1},alph,iter);
+CIMean_topAndando_T1T3 = estimateCIMean(indexes_andandoT1{1},indexes_andandoT3{1},alph,iter);
+CIMean_topAndando_T2T3 = estimateCIMean(indexes_andandoT2{1},indexes_andandoT3{1},alph,iter);
+
+%top escaleras
+CIMean_topEscaleras_T1T2 = estimateCIMean(indexes_escalerasT1{1},indexes_escalerasT2{1},alph,iter);
+CIMean_topEscaleras_T1T3 = estimateCIMean(indexes_escalerasT1{1},indexes_escalerasT3{1},alph,iter);
+CIMean_topEscaleras_T2T3 = estimateCIMean(indexes_escalerasT2{1},indexes_escalerasT3{1},alph,iter);
+
+%camiseta trabajando
+CIMean_camisetaTrabajando_T1T2 = estimateCIMean(indexes_trabajandoT1{2},indexes_trabajandoT2{2},alph,iter);
+CIMean_camisetaTrabajando_T1T3 = estimateCIMean(indexes_trabajandoT1{2},indexes_trabajandoT3{2},alph,iter);
+CIMean_camisetaTrabajando_T2T3 = estimateCIMean(indexes_trabajandoT2{2},indexes_trabajandoT3{2},alph,iter);
+
+%camiseta andando
+CIMean_camisetaAndando_T1T2 = estimateCIMean(indexes_andandoT1{2},indexes_andandoT2{2},alph,iter);
+CIMean_camisetaAndando_T1T3 = estimateCIMean(indexes_andandoT1{2},indexes_andandoT3{2},alph,iter);
+CIMean_camisetaAndando_T2T3 = estimateCIMean(indexes_andandoT2{2},indexes_andandoT3{2},alph,iter);
+
+%camiseta escaleras
+CIMean_camisetaEscaleras_T1T2 = estimateCIMean(indexes_escalerasT1{2},indexes_escalerasT2{2},alph,iter);
+CIMean_camisetaEscaleras_T1T3 = estimateCIMean(indexes_escalerasT1{2},indexes_escalerasT3{2},alph,iter);
+CIMean_camisetaEscaleras_T2T3 = estimateCIMean(indexes_escalerasT2{2},indexes_escalerasT3{2},alph,iter);
+
+%pantalon trabajando
+CIMean_pantTrabajando_T1T2 = estimateCIMean(indexes_trabajandoT1{3},indexes_trabajandoT2{3},alph,iter);
+CIMean_pantTrabajando_T1T3 = estimateCIMean(indexes_trabajandoT1{3},indexes_trabajandoT3{3},alph,iter);
+CIMean_pantTrabajando_T2T3 = estimateCIMean(indexes_trabajandoT2{3},indexes_trabajandoT3{3},alph,iter);
+
+%pantalon andando
+CIMean_pantAndando_T1T2 = estimateCIMean(indexes_andandoT1{3},indexes_andandoT2{3},alph,iter);
+CIMean_pantAndando_T1T3 = estimateCIMean(indexes_andandoT1{3},indexes_andandoT3{3},alph,iter);
+CIMean_pantAndando_T2T3 = estimateCIMean(indexes_andandoT2{3},indexes_andandoT3{3},alph,iter);
+
+%pantalon escaleras
+CIMean_pantEscaleras_T1T2 = estimateCIMean(indexes_escalerasT1{3},indexes_escalerasT2{3},alph,iter);
+CIMean_pantEscaleras_T1T3 = estimateCIMean(indexes_escalerasT1{3},indexes_escalerasT3{3},alph,iter);
+CIMean_pantEscaleras_T2T3 = estimateCIMean(indexes_escalerasT2{3},indexes_escalerasT3{3},alph,iter);
 
 %top 
 top_andando = [indexes_andandoT1{1},indexes_andandoT2{1},indexes_andandoT3{1}];

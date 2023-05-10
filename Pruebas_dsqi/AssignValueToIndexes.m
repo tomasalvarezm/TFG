@@ -55,7 +55,7 @@ function [kSQI_01,sSQI_01, pSQI_01, SQI_rel_powerLine_01, cSQI_01, basSQI_01,dSQ
        x_rp = [0.05 0.001];
        y_rp =  [0.5, 1];
        x_rp2 = [2.5 0.05];
-       y_rp2 = [lowerLimit, 0.5];
+       y_rp2 = [0.1, 0.5];
        if rel_powerLine < 0.001
            SQI_rel_powerLine_01 = 1;
        elseif rel_powerLine < 0.05
