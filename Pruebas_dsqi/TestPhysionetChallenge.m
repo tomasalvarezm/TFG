@@ -10,7 +10,7 @@ for i = 1:length(files)
     for lead = 2:13
          [kSQI_01_v,sSQI_01_v, pSQI_01_v, SQI_rel_powerLine_01_v,cSQI_01_v, basSQI_01_v,dSQI_01_v,geometricMean_V,averageGeometricMean] = IndexForSignalWindows(ImportPhysionetData(file, lead), originalFSPhysionet);
          meanVector_accFile(lead-1) = averageGeometricMean;
-         %fprintf("Indexes for %s, lead %i:  averageGeometricMean: %f \n ",file,lead,averageGeometricMean);
+         fprintf("Indexes for %s, lead %i:  averageGeometricMean: %f \n ",file,lead,averageGeometricMean);
     end
     index1 = mean(meanVector_accFile);
     index2 = geomean(meanVector_accFile,'all');
@@ -33,13 +33,12 @@ unacc_file = fopen(filename_2,'w+');
 meanVector_unaccFile = zeros(0,12);
 
 files = {'set-a/1002603.txt','set-a/1003574.txt','set-a/1004502.txt','set-a/1006637.txt','set-a/1028102.txt','set-a/1030400.txt','set-a/1030943.txt','set-a/1034914.txt','set-a/1038105.txt','set-a/1050325.txt','set-a/1052879.txt','set-a/1063069.txt','set-a/1063073.txt','set-a/1068152.txt','set-a/1072620.txt','set-a/1076589.txt','set-a/1079854.txt','set-a/1086219.txt','set-a/1089267.txt','set-a/1101829.txt','set-a/1105115.txt','set-a/1129899.txt','set-a/1136617.txt','set-a/1136770.txt','set-a/1138841.txt','set-a/1139166.txt','set-a/1149244.txt','set-a/1156063.txt','set-a/1163558.txt','set-a/1164815.txt','set-a/1169320.txt','set-a/1180858.txt','set-a/1183223.txt','set-a/1183818.txt','set-a/1192090.txt','set-a/1192637.txt','set-a/1202296.txt','set-a/1220041.txt','set-a/1221733.txt','set-a/1243537.txt','set-a/1254724.txt','set-a/1255536.txt','set-a/1279102.txt','set-a/1295738.txt','set-a/1301273.txt','set-a/1301328.txt','set-a/1317495.txt','set-a/1327085.txt','set-a/1327659.txt','set-a/1335760.txt','set-a/1337378.txt','set-a/1344978.txt','set-a/1347106.txt','set-a/1354265.txt','set-a/1355055.txt','set-a/1356379.txt','set-a/1356529.txt','set-a/1363712.txt','set-a/1364918.txt','set-a/1369305.txt','set-a/1377360.txt','set-a/1377539.txt','set-a/1382942.txt','set-a/1403997.txt','set-a/1408675.txt','set-a/1421230.txt','set-a/1425383.txt','set-a/1435087.txt','set-a/1436962.txt','set-a/1451509.txt','set-a/1452192.txt','set-a/1454865.txt','set-a/1463775.txt','set-a/1474710.txt','set-a/1480991.txt','set-a/1485621.txt','set-a/1490937.txt','set-a/1509036.txt','set-a/1531776.txt','set-a/1532215.txt','set-a/1553541.txt','set-a/1556297.txt','set-a/1568146.txt','set-a/1607439.txt','set-a/1609343.txt','set-a/1610034.txt','set-a/1628173.txt','set-a/1636307.txt','set-a/1648581.txt','set-a/1661380.txt','set-a/1669522.txt','set-a/1670989.txt','set-a/1691516.txt','set-a/1700006.txt','set-a/1703846.txt','set-a/1707186.txt','set-a/1708868.txt','set-a/1722066.txt','set-a/1725585.txt','set-a/1730951.txt','set-a/1756508.txt','set-a/1770220.txt','set-a/1772249.txt','set-a/1777141.txt','set-a/1781728.txt','set-a/1789020.txt','set-a/1791997.txt','set-a/1795070.txt','set-a/1815022.txt','set-a/1815563.txt','set-a/1816501.txt','set-a/1819445.txt','set-a/1836026.txt','set-a/1852649.txt','set-a/1882255.txt','set-a/1896934.txt','set-a/1897448.txt','set-a/1902736.txt','set-a/1906060.txt','set-a/1942060.txt','set-a/1943228.txt','set-a/1948708.txt','set-a/1951446.txt','set-a/1953759.txt','set-a/1961627.txt','set-a/1968052.txt','set-a/1980306.txt','set-a/2029246.txt','set-a/2052791.txt','set-a/2063503.txt','set-a/2064180.txt','set-a/2082473.txt','set-a/2085388.txt','set-a/2098595.txt','set-a/2110250.txt','set-a/2111450.txt','set-a/2117407.txt','set-a/2127139.txt','set-a/2140359.txt','set-a/2145403.txt','set-a/2151929.txt','set-a/2152580.txt','set-a/2167341.txt','set-a/2212042.txt','set-a/2213956.txt','set-a/2224949.txt','set-a/2230467.txt','set-a/2233440.txt','set-a/2240739.txt','set-a/2241695.txt','set-a/2246806.txt','set-a/2251502.txt','set-a/2271306.txt','set-a/2271513.txt','set-a/2280128.txt','set-a/2294899.txt','set-a/2298270.txt','set-a/2307927.txt','set-a/2326500.txt','set-a/2327647.txt','set-a/2329269.txt','set-a/2331194.txt','set-a/2338564.txt','set-a/2342679.txt','set-a/2352525.txt','set-a/2367143.txt','set-a/2368502.txt','set-a/2373003.txt','set-a/2378950.txt','set-a/2380637.txt','set-a/2386741.txt','set-a/2402945.txt','set-a/2407768.txt','set-a/2420975.txt','set-a/2428298.txt','set-a/2429146.txt','set-a/2431794.txt','set-a/2432060.txt','set-a/2458004.txt','set-a/2460945.txt','set-a/2471471.txt','set-a/2484180.txt','set-a/2518132.txt','set-a/2526844.txt','set-a/2530638.txt','set-a/2535792.txt','set-a/2540548.txt','set-a/2544510.txt','set-a/2547535.txt','set-a/2607058.txt','set-a/2607229.txt','set-a/2608391.txt','set-a/2674090.txt','set-a/2685031.txt','set-a/2722184.txt','set-a/2734941.txt','set-a/2739210.txt','set-a/2745435.txt','set-a/2749655.txt','set-a/2750205.txt','set-a/2761488.txt','set-a/2776731.txt','set-a/2813744.txt','set-a/2814777.txt','set-a/2815290.txt','set-a/2834490.txt','set-a/2834677.txt','set-a/2835744.txt','set-a/2841710.txt','set-a/2845888.txt','set-a/2846714.txt','set-a/2846723.txt','set-a/2849336.txt','set-a/2853629.txt','set-a/2863613.txt','set-a/2930238.txt','set-a/2936700.txt','set-a/2941243.txt','set-a/2944383.txt','set-a/2945144.txt','set-a/2966470.txt','set-a/2984959.txt','set-a/2989538.txt','set-a/2990643.txt','set-a/2993457.txt'};
-    
 for i = 1:length(files) 
     file = files{i} ;
     [filepath,name,ext] = fileparts(file);
     for lead = 2:13
          [kSQI_01_v,sSQI_01_v, pSQI_01_v, SQI_rel_powerLine_01_v,cSQI_01_v, basSQI_01_v,dSQI_01_v,geometricMean_V,averageGeometricMean] = IndexForSignalWindows(ImportPhysionetData(file, lead), originalFSPhysionet);
-         %fprintf("Indexes for %s, lead %i:  averageGeometricMean: %f \n ",file,lead,averageGeometricMean);
+         fprintf("Indexes for %s, lead %i:  averageGeometricMean: %f \n ",file,lead,averageGeometricMean);
          meanVector_unaccFile(lead-1) = averageGeometricMean;
     end
     index1_u = mean(meanVector_unaccFile);
@@ -53,7 +52,7 @@ for i = 1:length(files)
     fprintf(unacc_file,'%f ',arit_meanU);
     fprintf(unacc_file,'%f ',geo_mean1U);
     fprintf(unacc_file,'%f\n',geo_mean2U);
-    %fprintf("\n ");
+    fprintf("\n ");
 end 
 
 fclose(unacc_file);
