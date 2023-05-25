@@ -3,7 +3,7 @@ time_vector = 1:((7*60 + 59)*60)*1000;
 %top
 top_Prueba1 = ImportDataMultipleChannels('ECG-30-03-8H.txt',3);
 data_top_Prueba1 = top_Prueba1(time_vector);
-top_Prueba2 = ImportDataMultipleChannels('ECG-23-05-8H.txt',3);
+top_Prueba2 = ImportDataMultipleChannels('ECG-25-05-8H.txt',3);
 data_top_Prueba2 = top_Prueba2(time_vector);
 
 data_top = {data_top_Prueba1,data_top_Prueba2};
@@ -18,7 +18,7 @@ end
 %camiseta 
 camiseta_Prueba1 = ImportDataMultipleChannels('ECG-30-03-8H.txt',4);
 data_camiseta_Prueba1 = camiseta_Prueba1(time_vector);
-camiseta_Prueba2 = ImportDataMultipleChannels('ECG-23-05-8H.txt',4);
+camiseta_Prueba2 = ImportDataMultipleChannels('ECG-25-05-8H.txt',4);
 data_camiseta_Prueba2 = camiseta_Prueba2(time_vector);
 
 data_camiseta = {data_camiseta_Prueba1,data_camiseta_Prueba2};
@@ -33,7 +33,7 @@ end
 %pantalon
 pantalon_Prueba1 = ImportDataMultipleChannels('ECG-30-03-8H.txt',5);
 data_pantalon_Prueba1 = pantalon_Prueba1(time_vector);
-pantalon_Prueba2 = ImportDataMultipleChannels('ECG-23-05-8H.txt',5);
+pantalon_Prueba2 = ImportDataMultipleChannels('ECG-25-05-8H.txt',5);
 data_pantalon_Prueba2 = pantalon_Prueba2(time_vector);
 
 data_pantalon = {data_pantalon_Prueba1,data_pantalon_Prueba2};
