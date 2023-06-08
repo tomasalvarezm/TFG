@@ -134,6 +134,7 @@ for i=1:n
     indexes_escalerasT3{i} = geometricMean_vector;
 end
 
+
 %significance level for calculating the confidence intervals
 alph = 0.01;
 %number of iterations to use in boostrap
@@ -141,7 +142,7 @@ iter = 1000;
 
 %USING MEDIAN
 
-top trabajando
+%top trabajando
 CIMedian_topTrabajando_T1T2 = estimateCIMedian(indexes_trabajandoT1{1},indexes_trabajandoT2{1},alph,iter);
 CIMedian_topTrabajando_T1T3 = estimateCIMedian(indexes_trabajandoT1{1},indexes_trabajandoT3{1},alph,iter);
 CIMedian_topTrabajando_T2T3 = estimateCIMedian(indexes_trabajandoT2{1},indexes_trabajandoT3{1},alph,iter);
@@ -176,7 +177,7 @@ CIMedian_pantTrabajando_T1T2 = estimateCIMedian(indexes_trabajandoT1{3},indexes_
 CIMedian_pantTrabajando_T1T3 = estimateCIMedian(indexes_trabajandoT1{3},indexes_trabajandoT3{3},alph,iter);
 CIMedian_pantTrabajando_T2T3 = estimateCIMedian(indexes_trabajandoT2{3},indexes_trabajandoT3{3},alph,iter);
 
-pantalon andando
+%pantalon andando
 CIMedian_pantAndando_T1T2 = estimateCIMedian(indexes_andandoT1{3},indexes_andandoT2{3},alph,iter);
 CIMedian_pantAndando_T1T3 = estimateCIMedian(indexes_andandoT1{3},indexes_andandoT3{3},alph,iter);
 CIMedian_pantAndando_T2T3 = estimateCIMedian(indexes_andandoT2{3},indexes_andandoT3{3},alph,iter);
@@ -233,7 +234,7 @@ CIMean_pantEscaleras_T1T2 = estimateCIMean(indexes_escalerasT1{3},indexes_escale
 CIMean_pantEscaleras_T1T3 = estimateCIMean(indexes_escalerasT1{3},indexes_escalerasT3{3},alph,iter);
 CIMean_pantEscaleras_T2T3 = estimateCIMean(indexes_escalerasT2{3},indexes_escalerasT3{3},alph,iter);
 
-top 
+%top 
 top_andando = [indexes_andandoT1{1},indexes_andandoT2{1},indexes_andandoT3{1}];
 top_escaleras = [indexes_escalerasT1{1},indexes_escalerasT2{1},indexes_escalerasT3{1}];
 top_trabajando = [indexes_trabajandoT1{1},indexes_trabajandoT2{1},indexes_trabajandoT3{1}];
@@ -247,7 +248,7 @@ CIMean_topAndEsc = estimateCIMean(top_andando,top_escaleras,alph,iter);
 CIMean_topAndTrab = estimateCIMean(top_andando,top_trabajando,alph,iter);
 CIMean_topEscTrab = estimateCIMean(top_escaleras,top_trabajando,alph,iter);
 
-camiseta
+%camiseta
 camiseta_andando = [indexes_andandoT1{2},indexes_andandoT2{2},indexes_andandoT3{2}];
 camiseta_escaleras = [indexes_escalerasT1{2},indexes_escalerasT2{2},indexes_escalerasT3{2}];
 camiseta_trabajando = [indexes_trabajandoT1{2},indexes_trabajandoT2{2},indexes_trabajandoT3{2}];
@@ -261,7 +262,7 @@ CIMean_camAndEsc = estimateCIMean(camiseta_andando,camiseta_escaleras,alph,iter)
 CIMean_camAndTrab = estimateCIMean(camiseta_andando,camiseta_trabajando,alph,iter);
 CIMean_camEscTrab = estimateCIMean(camiseta_escaleras,camiseta_trabajando,alph,iter);
 
-pantalon
+%pantalon
 pant_andando = [indexes_andandoT1{3},indexes_andandoT2{3},indexes_andandoT3{3}];
 pant_escaleras = [indexes_escalerasT1{3},indexes_escalerasT2{3},indexes_escalerasT3{3}];
 pant_trabajando = [indexes_trabajandoT1{3},indexes_trabajandoT2{3},indexes_trabajandoT3{3}];
@@ -275,7 +276,7 @@ CIMean_pantAndEsc = estimateCIMean(pant_andando,pant_escaleras,alph,iter);
 CIMean_pantAndTrab = estimateCIMean(pant_andando,pant_trabajando,alph,iter);
 CIMean_pantEscTrab = estimateCIMean(pant_escaleras,pant_trabajando,alph,iter);
 
-top vs camiseta para diferentes actividades 
+%top vs camiseta para diferentes actividades 
 CIMedian_topcamAnd = estimateCIMedian(top_andando,camiseta_andando,alph,iter);
 CIMedian_topcamEsc = estimateCIMedian(top_escaleras,camiseta_escaleras,alph,iter);
 CIMedian_topcamTrab = estimateCIMedian(top_trabajando,camiseta_trabajando,alph,iter);

@@ -50,20 +50,18 @@ function [kSQI_01,sSQI_01, pSQI_01, SQI_rel_powerLine_01, cSQI_01, basSQI_01,dSQ
    % for rel_powerLine SQI_rel_powerLine
 
    if(isnan(rel_powerLine)) %occurs when the entire ECG segment has a constant value (typically 0)
-      SQI_rel_powerLine_01 = lowerLimit;   
+      SQI_rel_powerLine_01 = lowerLimit;  
    else
        x_rp = [0.05 0.001];
        y_rp =  [0.5, 1];
-       x_rp2 = [2.5 0.05];
+       x_rp2 = [4, 0.05];
        y_rp2 = [0.1, 0.5];
        if rel_powerLine < 0.001
            SQI_rel_powerLine_01 = 1;
        elseif rel_powerLine < 0.05
-           SQI_rel_powerLine_01 = interp1(x_rp,y_rp, rel_powerLine); 
+           SQI_rel_powerLine_01 = interp1(x_rp,y_rp, rel_powerLine);
        elseif rel_powerLine > 4
-           SQI_rel_powerLine_01 = lowerLimit;   
-       elseif rel_powerLine > 2.5
-           SQI_rel_powerLine_01 = 0.1;
+           SQI_rel_powerLine_01 = lowerLimit;  
        else
            SQI_rel_powerLine_01 = interp1(x_rp2,y_rp2, rel_powerLine);
        end

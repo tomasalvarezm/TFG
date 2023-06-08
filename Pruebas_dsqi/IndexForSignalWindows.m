@@ -76,7 +76,8 @@ function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, 
             tit= sprintf('kSQI: %.2f, pSQI: %.2f, rel_powerLine: %.2f, basSQI: %.2f, cSQI: %.2f, dSQI: %.2f, geometricMean: %.2f ', [kSQI_01, pSQI_01, SQI_rel_powerLine_01, basSQI_01, cSQI_01, dSQI_01, geometricMean]);
             fprintf("\n");
             plot(data_f);
-            title(tit);
+            set(gca,'FontSize',20)
+            title(tit,'FontSize',18);
            pause(1);         
         
             if(geometricMean < 0.9)
