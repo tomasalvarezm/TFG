@@ -1,0 +1,45 @@
+
+
+time_vector = 1:((7*60 + 59)*60)*1000;
+
+top_Prueba1 = ImportDataMultipleChannels('ECG13-03-8H.txt',3);
+data_top_Prueba1 = top_Prueba1(time_vector);
+top_Prueba2 = ImportDataMultipleChannels('ECG-25-03-8H.txt',3);
+data_top_Prueba2 = top_Prueba2(time_vector);
+top_Prueba3 = ImportDataMultipleChannels('ECG1_TopTela1_8H.txt',3);
+data_top_Prueba3 = top_Prueba3(time_vector);
+top_Prueba4 = ImportDataMultipleChannels('ECG2_TopTela1_8H.txt',3);
+data_top_Prueba4 = top_Prueba4(time_vector);
+top_Prueba5 = ImportDataMultipleChannels('ECG1_TopTela2_8H.txt',3);
+data_top_Prueba5 = top_Prueba5(time_vector);
+top_Prueba6 = ImportDataMultipleChannels('ECG2_TopTela2_8H.txt',3);
+data_top_Prueba6 = top_Prueba6(time_vector);
+
+data_top = {data_top_Prueba1,data_top_Prueba2,data_top_Prueba3,data_top_Prueba4,data_top_Prueba5,data_top_Prueba6};
+n = length(data_top);
+indexes_top = cell(1,n);
+for i=1:n
+    data = data_top{i};
+    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = IndexForSignalWindows(data, originalFSBitalino);
+    indexes_top{i} = geometricMean_vector;
+end
+
+alph = 0.01;
+iter = 1000; 
+
+indexesTela3 = [indexes_top{1},indexes_top{2}];
+indexesTela1 = [indexes_top{3},indexes_top{4}];
+indexesTela2 = [indexes_top{5},indexes_top{6}];
+
+%comparar LT1-LT2 con registros de la tela 1 y 2
+
+CIMeanTela3Tela1 = estimateCIMean(indexesTela3,indexesTela1,alph,iter);
+CIMeanTela3Tela2 = estimateCIMean(indexesTela3,indexesTela2,alph,iter);
+
+CIMedianTela3Tela1 = estimateCIMedian(indexesTela3,indexesTela1,alph,iter);
+CIMedianTela3Tela2 = estimateCIMedian(indexesTela3,indexesTela2,alph,iter);
+
+%comparacion entre tela 1 y tela 2
+
+CIMeanTela1Tela2 = estimateCIMean(indexesTela1,indexesTela2,alph,iter);
+CIMedianTela1Tela2 
