@@ -312,6 +312,16 @@ CIMedian_pantT4T14 = estimateCIMedian(indexes_pantalon{4},indexes_pantalon{14},a
 CIMean_pantT4T14 = estimateCIMean(indexes_pantalon{4},indexes_pantalon{14},alph,iter);
 
 
+% top
+CIMedian_topT4T15 = estimateCIMedian(indexes_top{4},indexes_top{15},alph,iter);
+CIMean_topT4T15 = estimateCIMean(indexes_top{4},indexes_top{15},alph,iter);
 
+% t-shirt
+CIMedian_camT4T15 = estimateCIMedian(indexes_camiseta{4},indexes_camiseta{15},alph,iter);
+CIMean_camT4T15 = estimateCIMean(indexes_camiseta{4},indexes_camiseta{15},alph,iter);
+
+% pant
+CIMedian_pantT4T15 = estimateCIMedian(indexes_pantalon{4},indexes_pantalon{15},alph,iter);
+CIMean_pantT4T15 = estimateCIMean(indexes_pantalon{4},indexes_pantalon{15},alph,iter);
 
 
