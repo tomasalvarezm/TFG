@@ -1,4 +1,4 @@
-%assign a value between 0.1-1 to each of the indexes and calculate the
+%Assign a value between 0.1-1 to each of the indexes and calculate the
 %geometric mean
 function [kSQI_01,sSQI_01, pSQI_01, SQI_rel_powerLine_01, cSQI_01, basSQI_01,dSQI_01,geometricMean] = AssignValueToIndexes(kSQI,sSQI, pSQI, rel_powerLine, cSQI, basSQI,total_dSQI)
    y = [lowerLimit 1]; %vector para interpolation

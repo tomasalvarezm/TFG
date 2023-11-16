@@ -9,7 +9,7 @@ for i = 1:length(files)
      file = files{i} ;
      [filepath,name,ext] = fileparts(file);
     for lead = 2:13
-         [kSQI_01_v,sSQI_01_v, pSQI_01_v, SQI_rel_powerLine_01_v,cSQI_01_v, basSQI_01_v,dSQI_01_v,geometricMean_V,averageGeometricMean] = IndexForSignalWindows(ImportPhysionetData(file, lead), originalFSPhysionet);
+         [kSQI_01_v,sSQI_01_v, pSQI_01_v, SQI_rel_powerLine_01_v,cSQI_01_v, basSQI_01_v,dSQI_01_v,geometricMean_V,averageGeometricMean] = mSQI(ImportPhysionetData(file, lead), originalFSPhysionet);
          meanVector_accFile(lead-1) = averageGeometricMean;
          fprintf("Indexes for %s, lead %i:  averageGeometricMean: %f \n ",file,lead,averageGeometricMean);
     end
@@ -44,7 +44,7 @@ for i = 1:length(files)
     file = files{i} ;
     [filepath,name,ext] = fileparts(file);
     for lead = 2:13
-         [kSQI_01_v,sSQI_01_v, pSQI_01_v, SQI_rel_powerLine_01_v,cSQI_01_v, basSQI_01_v,dSQI_01_v,geometricMean_V,averageGeometricMean] = IndexForSignalWindows(ImportPhysionetData(file, lead), originalFSPhysionet);
+         [kSQI_01_v,sSQI_01_v, pSQI_01_v, SQI_rel_powerLine_01_v,cSQI_01_v, basSQI_01_v,dSQI_01_v,geometricMean_V,averageGeometricMean] = mSQI(ImportPhysionetData(file, lead), originalFSPhysionet);
          fprintf("Indexes for %s, lead %i:  averageGeometricMean: %f \n ",file,lead,averageGeometricMean);
          meanVector_unaccFile(lead-1) = averageGeometricMean;
     end

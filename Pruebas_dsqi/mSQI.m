@@ -1,6 +1,9 @@
+%Calculates mSQI metric
+%
+%It receives as arguments an array of data containing a single ECG lead (data)
+% and its sampling rate (FS_original)
 
-%calculate the index for windows of 4 seconds
-function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = IndexForSignalWindows(data, FS_original)
+function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, FS_original)
      
       Fs_new = samplingFreq;
       [P,Q] = rat(Fs_new/FS_original);
@@ -20,7 +23,7 @@ function [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, 
       geometricMean_vector = zeros(1,size_vector);
 
     try
-         [qrs,varargout] = pantompkins_qrs(data_s,samplingFreq,logical(0)); 
+         [qrs,varargout] = pantompkins_qrs(data_s,samplingFreq, false); 
     catch exception
         qrs=[0];%no qrs 
     end
@@ -157,10 +160,7 @@ end
 function [vector_ups] = upsampleVector(vector)
     Fs = 1/windowSize;
     Fs_ecg = samplingFreq;
-%    [P,Q] = rat(Fs_ecg/Fs);
-%    vector_ups = resample(vector,P,Q);
-     upsampleFactor = Fs_ecg/Fs;
-     vector_ups = upsample(vector,upsampleFactor);
-   
+    upsampleFactor = Fs_ecg/Fs;
+    vector_ups = upsample(vector,upsampleFactor);
 
 end

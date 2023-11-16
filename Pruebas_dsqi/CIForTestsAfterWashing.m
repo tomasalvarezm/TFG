@@ -14,7 +14,7 @@ n = length(data_top);
 indexes_top = cell(1,n);
 for i=1:n
     data = data_top{i};
-    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = IndexForSignalWindows(data, originalFSBitalino);
+    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, originalFSBitalino);
     indexes_top{i} = geometricMean_vector;
 end
 
@@ -31,7 +31,7 @@ n = length(data_camiseta);
 indexes_camiseta = cell(1,n);
 for i=1:n
     data = data_camiseta{i};
-    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = IndexForSignalWindows(data, originalFSBitalino);
+    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, originalFSBitalino);
     indexes_camiseta{i} = geometricMean_vector;
 end
 
@@ -48,7 +48,7 @@ n = length(data_pantalon);
 indexes_pantalon = cell(1,n);
 for i=1:n
     data = data_pantalon{i};
-    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = IndexForSignalWindows(data, originalFSBitalino);
+    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, originalFSBitalino);
     indexes_pantalon{i} = geometricMean_vector;
 end
 
