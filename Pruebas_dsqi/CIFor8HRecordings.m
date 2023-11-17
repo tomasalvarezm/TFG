@@ -39,7 +39,7 @@ n = length(data_top);
 indexes_top = cell(1,n);
 for i=1:n
     data = data_top{i};
-    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, originalFSBitalino);
+    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, 1000);
     indexes_top{i} = geometricMean_vector;
 end
 
@@ -81,7 +81,7 @@ n = length(data_camiseta);
 indexes_camiseta = cell(1,n);
 for i=1:n
     data = data_camiseta{i};
-    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, originalFSBitalino);
+    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, 1000);
     indexes_camiseta{i} = geometricMean_vector;
 end
 
@@ -122,7 +122,7 @@ n = length(data_pantalon);
 indexes_pantalon = cell(1,n);
 for i=1:n
     data = data_pantalon{i};
-    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, originalFSBitalino);
+    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, 1000);
     indexes_pantalon{i} = geometricMean_vector;
 end
 
@@ -312,6 +312,16 @@ CIMedian_pantT4T14 = estimateCIMedian(indexes_pantalon{4},indexes_pantalon{14},a
 CIMean_pantT4T14 = estimateCIMean(indexes_pantalon{4},indexes_pantalon{14},alph,iter);
 
 
+% top
+CIMedian_topT4T15 = estimateCIMedian(indexes_top{4},indexes_top{15},alph,iter);
+CIMean_topT4T15 = estimateCIMean(indexes_top{4},indexes_top{15},alph,iter);
 
+% t-shirt
+CIMedian_camT4T15 = estimateCIMedian(indexes_camiseta{4},indexes_camiseta{15},alph,iter);
+CIMean_camT4T15 = estimateCIMean(indexes_camiseta{4},indexes_camiseta{15},alph,iter);
+
+% pant
+CIMedian_pantT4T15 = estimateCIMedian(indexes_pantalon{4},indexes_pantalon{15},alph,iter);
+CIMean_pantT4T15 = estimateCIMean(indexes_pantalon{4},indexes_pantalon{15},alph,iter);
 
 

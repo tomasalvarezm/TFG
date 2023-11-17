@@ -49,7 +49,7 @@ data_escaleras_T3_pantalon = data_T3_pantalon(1*60*1000+1:9*60*1000);
 data_trabajando_T3_pantalon = data_T3_pantalon(11*60*1000+1:19*60*1000);
 data_andando_T3_pantalon = data_T3_pantalon(21*60*1000+1:29*60*1000);
 
-%[kSQI_01_v,sSQI_01_v, pSQI_01_v, SQI_rel_powerLine_01_v,cSQI_01_v, basSQI_01_v,dSQI_01_v,geometricMean_V,averageGeometricMean] = mSQI(data_trabajando_T1_pantalon, originalFSBitalino);
+%[kSQI_01_v,sSQI_01_v, pSQI_01_v, SQI_rel_powerLine_01_v,cSQI_01_v, basSQI_01_v,dSQI_01_v,geometricMean_V,averageGeometricMean] = mSQI(data_trabajando_T1_pantalon, 1000);
 
 %registros trabajando 
 T1_trabajando = {data_trabajando_T1_top,data_trabajando_T1_camiseta,data_trabajando_T1_pantalon};
@@ -58,7 +58,7 @@ indexes_trabajandoT1 = cell(1,n);
 
 for i=1:n
     data = T1_trabajando{i};
-    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, originalFSBitalino);
+    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, 1000);
     indexes_trabajandoT1{i} = geometricMean_vector;
 end
 
@@ -72,7 +72,7 @@ indexes_trabajandoT2 = cell(1,n);
 
 for i=1:n
     data = T2_trabajando{i};
-    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, originalFSBitalino);
+    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, 1000);
     indexes_trabajandoT2{i} = geometricMean_vector;
 end
 
@@ -82,7 +82,7 @@ indexes_trabajandoT3 = cell(1,n);
 
 for i=1:n
     data = T3_trabajando{i};
-    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, originalFSBitalino);
+    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, 1000);
     indexes_trabajandoT3{i} = geometricMean_vector;
 end
 
@@ -92,7 +92,7 @@ n = length(T1_andando);
 indexes_andandoT1 = cell(1,n);
 for i=1:n
     data = T1_andando{i};
-    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, originalFSBitalino);
+    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, 1000);
     indexes_andandoT1{i} = geometricMean_vector;
 end
 
@@ -101,7 +101,7 @@ n = length(T2_andando);
 indexes_andandoT2 = cell(1,n);
 for i=1:n
     data = T2_andando{i};
-    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, originalFSBitalino);
+    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, 1000);
     indexes_andandoT2{i} = geometricMean_vector;
 end
 
@@ -110,7 +110,7 @@ n = length(T3_andando);
 indexes_andandoT3 = cell(1,n);
 for i=1:n
     data = T3_andando{i};
-    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, originalFSBitalino);
+    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, 1000);
     indexes_andandoT3{i} = geometricMean_vector;
 end
 
@@ -120,7 +120,7 @@ n = length(T1_escaleras);
 indexes_escalerasT1 = cell(1,n);
 for i=1:n
     data = T1_escaleras{i};
-    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, originalFSBitalino);
+    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, 1000);
     indexes_escalerasT1{i} = geometricMean_vector;
 end
 
@@ -129,7 +129,7 @@ n = length(T2_escaleras);
 indexes_escalerasT2 = cell(1,n);
 for i=1:n
     data = T2_escaleras{i};
-    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, originalFSBitalino);
+    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, 1000);
     indexes_escalerasT2{i} = geometricMean_vector;
 end
 
@@ -138,7 +138,7 @@ n = length(T3_escaleras);
 indexes_escalerasT3 = cell(1,n);
 for i=1:n
     data = T3_escaleras{i};
-    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, originalFSBitalino);
+    [kSQI_01_vector,sSQI_01_vector, pSQI_01_vector,rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector,dSQI_01_vector,geometricMean_vector,averageGeometricMean] = mSQI(data, 1000);
     indexes_escalerasT3{i} = geometricMean_vector;
 end
 
