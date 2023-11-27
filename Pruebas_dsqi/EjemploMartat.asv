@@ -1,7 +1,5 @@
 
-%time_vector = 1:((7*60 + 59)*60)*1000; 
-% AÑADIR, HAY Q MODIFICAR ALGUNAS LINEAS D CÓDIGO PARA Q LOS REGISTROS
-% DUREN 8h
+%time_vector = 1:((7*60 + 59)*60)*1000; AÑADIR, cada files_TopM debe duranr 8h aplicar a los otros tb!!
 
 files_TopM = {'M/TopM/n_Registro1_TopM_2023_10_19.txt', 
     'M/TopM/n_Registro2_TopM_2023-10-24_08-26-59.txt',
@@ -126,8 +124,8 @@ CIMean_topMvstopS_topXS= estimateCIMean(cell2mat(indexes_topM),data_topMvstopS_t
 CIMedian_topSvstopM_topXS= estimateCIMedian(cell2mat(indexes_topS),data_topSvstopM_topXS,alph,iter);
 CIMean_topSvstopM_topXS= estimateCIMean(cell2mat(indexes_topS),data_topSvstopM_topXS,alph,iter);
 % Comparison of the 4 Registers of TopXS vs the other 4 registers of TopM, and TopS
-CIMedian_topXSvstopM_topS= estimateCIMedian(cell2mat(indexes_topXS),data_topXSvstopM_topS,alph,iter);
-CIMean_topXSvstopM_topS= estimateCIMean(cell2mat(indexes_topXS),data_topXSvstopM_topS,alph,iter);
+CIMedian_topXSvstopM_topS= estimateCIMedian(indexes_topS(indexes_topXS),data_topXSvstopM_topS,alph,iter);
+CIMean_topXSvstopM_topS= estimateCIMean(indexes_topS(indexes_topXS),data_topXSvstopM_topS,alph,iter);
 
 %disp(CIMedian)
 %disp(CIMean)
@@ -142,7 +140,7 @@ end
 % Histograms for each register of TopS
 for i = 1:4
     figure;
-    histogram(indexes_topS{i}, 20);
+    histogram( {i}, 20);
     title(['Histogram for indexes\_topS{' num2str(i) '}']);
 end
 
