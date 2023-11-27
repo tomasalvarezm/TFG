@@ -1,24 +1,41 @@
 
-%time_vector = 1:((7*60 + 59)*60)*1000; 
-% AÑADIR, HAY Q MODIFICAR ALGUNAS LINEAS D CÓDIGO PARA Q LOS REGISTROS
-% DUREN 8h
+TEST = 1;
 
-files_TopM = {'M/TopM/n_Registro1_TopM_2023_10_19.txt', 
-    'M/TopM/n_Registro2_TopM_2023-10-24_08-26-59.txt',
-    'M/TopM/n_Regsitro3_TopM_2023-10-29_09-00-19.txt',
-    'M/TopM/n_Registro4_TopM_2023-11-13_09-33-54.txt'};
+if (TEST)
+    time_vector = 1:((7*60 + 59)*60); 
+    
+    files_TopM = {'M/TopM/n_Registro1_TopM_2023_10_19.txt', 
+        'M/TopM/n_Registro2_TopM_2023-10-24_08-26-59.txt',
+        'M/TopM/n_Regsitro3_TopM_2023-10-29_09-00-19.txt',
+        'M/TopM/n_Registro4_TopM_2023-11-13_09-33-54.txt'};
 
+    files_TopS = {'M/TopS/n_Registro1_TopS_2023-10-21.txt', 
+        'M/TopS/n_Resgistro2_TopS_2023-10-26_08-52-56.txt',
+        'M/TopS/n_Registro3_TopS_2023-10-30_08-33-05.txt',
+        'M/TopS/n_Registro 4_TopS_2023-11-16_08-26-59.txt'};
 
-files_TopS = {'M/TopS/n_Registro1_TopS_2023-10-21.txt', 
-    'M/TopS/n_Resgistro2_TopS_2023-10-26_08-52-56.txt',
-    'M/TopS/n_Registro3_TopS_2023-10-30_08-33-05.txt',
-    'M/TopS/n_Registro 4_TopS_2023-11-16_08-26-59.txt'};
+    files_TopXS = {'M/TopXS/n_Registro1_topXS_2023_10_20.txt', 
+        'M/TopXS/n_Registro2_TopXS_2023-10-27_11-04-10.txt',
+        'M/TopXS/n_Registro3_TopXS_2023-11-03_08-25-57.txt',
+        'M/TopXS/n_Registro4_TopXS_2023-11-20_08-17-57.txt'}; 
+else
+     time_vector = 1:((7*60 + 59)*60)*1000; 
+     
+     files_TopM = {'M/TopM/Registro1_TopM_2023_10_19.txt', 
+        'M/TopM/Registro2_TopM_2023-10-24_08-26-59.txt',
+        'M/TopM/Regsitro3_TopM_2023-10-29_09-00-19.txt',
+        'M/TopM/Registro4_TopM_2023-11-13_09-33-54.txt'};
 
-files_TopXS = {'M/TopXS/n_Registro1_topXS_2023_10_20.txt', 
-    'M/TopXS/n_Registro2_TopXS_2023-10-27_11-04-10.txt',
-    'M/TopXS/n_Registro3_TopXS_2023-11-03_08-25-57.txt',
-    'M/TopXS/n_Registro4_TopXS_2023-11-20_08-17-57.txt'}; 
+    files_TopS = {'M/TopS/Registro1_TopS_2023-10-21.txt', 
+        'M/TopS/Resgistro2_TopS_2023-10-26_08-52-56.txt',
+        'M/TopS/Registro3_TopS_2023-10-30_08-33-05.txt',
+        'M/TopS/Registro 4_TopS_2023-11-16_08-26-59.txt'};
 
+    files_TopXS = {'M/TopXS/Registro1_topXS_2023_10_20.txt', 
+        'M/TopXS/Registro2_TopXS_2023-10-27_11-04-10.txt',
+        'M/TopXS/Registro3_TopXS_2023-11-03_08-25-57.txt',
+        'M/TopXS/Registro4_TopXS_2023-11-20_08-17-57.txt'}; 
+ end
 
 
 
@@ -30,7 +47,9 @@ for setIndex = 1: length(indexes)
     indexes{setIndex} = cell(1, length(currentFiles)); % indexes{1}= a un vector con 4 pos 
 
     for fileIndex = 1:length(currentFiles) % fileIndex = 1:length(currentFiles)=4
-        [kSQI_01_vector, sSQI_01_vector, pSQI_01_vector, rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector, dSQI_01_vector, geometricMean_vector, averageGeometricMean] = mSQI(ImportPluxData(currentFiles{fileIndex}, 3), 1000);
+        data = ImportPluxData(currentFiles{fileIndex}, 3);
+        ecg = data(time_vector);
+        [kSQI_01_vector, sSQI_01_vector, pSQI_01_vector, rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector, dSQI_01_vector, geometricMean_vector, averageGeometricMean] = mSQI(ecg, 1000);
         indexes{setIndex}{fileIndex} = geometricMean_vector;
         fprintf("Average mean of windows of %s: %f\n", currentFiles{fileIndex}, averageGeometricMean);
     end
