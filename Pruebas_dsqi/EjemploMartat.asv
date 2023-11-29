@@ -1,22 +1,41 @@
 
-%time_vector = 1:((7*60 + 59)*60)*1000; AÑADIR, cada files_TopM debe duranr 8h aplicar a los otros tb!!
+TEST = 0;
 
-files_TopM = {'M/TopM/n_Registro1_TopM_2023_10_19.txt', 
-    'M/TopM/n_Registro2_TopM_2023-10-24_08-26-59.txt',
-    'M/TopM/n_Regsitro3_TopM_2023-10-29_09-00-19.txt',
-    'M/TopM/n_Registro4_TopM_2023-11-13_09-33-54.txt'};
+if (TEST)
+    time_vector = 1:((7*60 + 59)*60); 
+    
+    files_TopM = {'M/TopM/n_Registro1_TopM_2023_10_19.txt', 
+        'M/TopM/n_Registro2_TopM_2023-10-24_08-26-59.txt',
+        'M/TopM/n_Regsitro3_TopM_2023-10-29_09-00-19.txt',
+        'M/TopM/n_Registro4_TopM_2023-11-13_09-33-54.txt'};
 
+    files_TopS = {'M/TopS/n_Registro1_TopS_2023-10-21.txt', 
+        'M/TopS/n_Resgistro2_TopS_2023-10-26_08-52-56.txt',
+        'M/TopS/n_Registro3_TopS_2023-10-30_08-33-05.txt',
+        'M/TopS/n_Registro 4_TopS_2023-11-16_08-26-59.txt'};
 
-files_TopS = {'M/TopS/n_Registro1_TopS_2023-10-21.txt', 
-    'M/TopS/n_Resgistro2_TopS_2023-10-26_08-52-56.txt',
-    'M/TopS/n_Registro3_TopS_2023-10-30_08-33-05.txt',
-    'M/TopS/n_Registro 4_TopS_2023-11-16_08-26-59.txt'};
+    files_TopXS = {'M/TopXS/n_Registro1_topXS_2023_10_20.txt', 
+        'M/TopXS/n_Registro2_TopXS_2023-10-27_11-04-10.txt',
+        'M/TopXS/n_Registro3_TopXS_2023-11-03_08-25-57.txt',
+        'M/TopXS/n_Registro4_TopXS_2023-11-20_08-17-57.txt'}; 
+else
+     time_vector = 1:(((7*60 + 59)*60)*1000-360000); 
+     
+     files_TopM = {'M/TopM/Registro1_TopM_2023_10_19.txt', 
+        'M/TopM/Registro2_TopM_2023-10-24_08-26-59.txt',
+        'M/TopM/Regsitro3_TopM_2023-10-29_09-00-19.txt',
+        'M/TopM/Registro4_TopM_2023-11-13_09-33-54.txt'};
 
-files_TopXS = {'M/TopXS/n_Registro1_topXS_2023_10_20.txt', 
-    'M/TopXS/n_Registro2_TopXS_2023-10-27_11-04-10.txt',
-    'M/TopXS/n_Registro3_TopXS_2023-11-03_08-25-57.txt',
-    'M/TopXS/n_Registro4_TopXS_2023-11-20_08-17-57.txt'}; 
+    files_TopS = {'M/TopS/Registro1_TopS_2023-10-21.txt', 
+        'M/TopS/Resgistro2_TopS_2023-10-26_08-52-56.txt',
+        'M/TopS/Registro3_TopS_2023-10-30_08-33-05.txt',
+        'M/TopS/Registro 4_TopS_2023-11-16_08-26-59.txt'};
 
+    files_TopXS = {'M/TopXS/Registro1_topXS_2023_10_20.txt', 
+        'M/TopXS/Registro2_TopXS_2023-10-27_11-04-10.txt',
+        'M/TopXS/Registro3_TopXS_2023-11-03_08-25-57.txt',
+        'M/TopXS/Registro4_TopXS_2023-11-20_08-17-57.txt'}; 
+ end
 
 
 
@@ -28,7 +47,9 @@ for setIndex = 1: length(indexes)
     indexes{setIndex} = cell(1, length(currentFiles)); % indexes{1}= a un vector con 4 pos 
 
     for fileIndex = 1:length(currentFiles) % fileIndex = 1:length(currentFiles)=4
-        [kSQI_01_vector, sSQI_01_vector, pSQI_01_vector, rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector, dSQI_01_vector, geometricMean_vector, averageGeometricMean] = mSQI(ImportPluxData(currentFiles{fileIndex}, 3), 1000);
+        data = ImportPluxData(currentFiles{fileIndex}, 3);
+        ecg = data(time_vector);
+        [kSQI_01_vector, sSQI_01_vector, pSQI_01_vector, rel_powerLine01_vector, cSQI_01_vector, basSQI_01_vector, dSQI_01_vector, geometricMean_vector, averageGeometricMean] = mSQI(ecg, 1000);
         indexes{setIndex}{fileIndex} = geometricMean_vector;
         fprintf("Average mean of windows of %s: %f\n", currentFiles{fileIndex}, averageGeometricMean);
     end
@@ -115,21 +136,6 @@ CIMedian_topXS_R4vsR1R2R3 = estimateCIMedian(indexes_topXS{4},data_topXS_R1R2R3,
 CIMean_topXS_R4vsR1R2R3 = estimateCIMean(indexes_topXS{4},data_topXS_R1R2R3,alph,iter);
 
 
-
-% Comparison Across Registers of TopM, TopXS, and TopS
-% Comparison of the 4 Registers of TopM vs the other 4 registers of TopXS, and TopS
-CIMedian_topMvstopS_topXS= estimateCIMedian(cell2mat(indexes_topM),data_topMvstopS_topXS,alph,iter);
-CIMean_topMvstopS_topXS= estimateCIMean(cell2mat(indexes_topM),data_topMvstopS_topXS,alph,iter);
-% Comparison of the 4 Registers of TopS vs the other 4 registers of TopXS, and TopM
-CIMedian_topSvstopM_topXS= estimateCIMedian(cell2mat(indexes_topS),data_topSvstopM_topXS,alph,iter);
-CIMean_topSvstopM_topXS= estimateCIMean(cell2mat(indexes_topS),data_topSvstopM_topXS,alph,iter);
-% Comparison of the 4 Registers of TopXS vs the other 4 registers of TopM, and TopS
-CIMedian_topXSvstopM_topS= estimateCIMedian(indexes_topS(indexes_topXS),data_topXSvstopM_topS,alph,iter);
-CIMean_topXSvstopM_topS= estimateCIMean(indexes_topS(indexes_topXS),data_topXSvstopM_topS,alph,iter);
-
-%disp(CIMedian)
-%disp(CIMean)
-
 % Histograms for each register of TopM
 for i = 1:4
     figure;
@@ -140,7 +146,7 @@ end
 % Histograms for each register of TopS
 for i = 1:4
     figure;
-    histogram( {i}, 20);
+    histogram(indexes_topS{i}, 20);
     title(['Histogram for indexes\_topS{' num2str(i) '}']);
 end
 
@@ -155,3 +161,60 @@ end
 %figure()
 %histogram(geometricMean_V_24, 20)
 
+
+indexes_topM_v = cell2mat(indexes_topM);
+indexes_topS_v = cell2mat(indexes_topS);
+indexes_topXS_v = cell2mat(indexes_topXS);
+
+z_mean_indexes_topM = mean (indexes_topM_v);
+z_var_indexes_topM = var(indexes_topM_v);
+z_mean_indexes_topS = mean (indexes_topS_v);
+z_var_indexes_topS = var(indexes_topS_v);
+z_mean_indexes_topXS = mean (indexes_topXS_v);
+z_var_indexes_topXS = var(indexes_topXS_v);
+
+
+y_CIMedian_topMvstopS= estimateCIMedian(indexes_topM_v, indexes_topS_v, alph, iter);
+y_CIMean_topMvstopS= estimateCIMean(indexes_topM_v, indexes_topS_v, alph, iter);
+
+y_CIMedian_topMvstopXS= estimateCIMedian(indexes_topM_v, indexes_topXS_v, alph, iter);
+y_CIMean_topMvstopXS= estimateCIMean(indexes_topM_v, indexes_topXS_v, alph, iter);
+
+y_CIMedian_topSvstopXS= estimateCIMedian(indexes_topS_v, indexes_topXS_v, alph, iter);
+y_CIMean_topSvstopXS= estimateCIMean(indexes_topS_v, indexes_topXS_v, alph, iter);
+
+
+x_mean_indexes_topM = cellfun(@mean, indexes_topM);
+x_mean_indexes_topS = cellfun(@mean, indexes_topS);
+x_mean_indexes_topXS = cellfun(@mean, indexes_topXS);
+
+x_var_indexes_topM = cellfun(@var, indexes_topM);
+x_var_indexes_topS = cellfun(@var, indexes_topS);
+x_var_indexes_topXS = cellfun(@var, indexes_topXS);
+
+figure
+histogram(indexes_topM_v, 20);
+title(['Histogram for indexes top M']);
+
+figure
+histogram(indexes_topS_v, 20);
+title(['Histogram for indexes top S']);
+
+figure
+histogram(indexes_topXS_v, 20);
+title(['Histogram for indexes top XS']);
+
+
+tiledlayout(3,1)
+
+nexttile
+histogram(indexes_topM_v, 20);
+title(['Histogram for indexes top M']);
+
+nexttile
+histogram(indexes_topS_v, 20);
+title(['Histogram for indexes top S']);
+
+nexttile
+histogram(indexes_topXS_v, 20);
+title(['Histogram for indexes top XS']);

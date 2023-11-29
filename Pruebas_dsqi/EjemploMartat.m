@@ -1,5 +1,5 @@
 
-TEST = 1;
+TEST = 0;
 
 if (TEST)
     time_vector = 1:((7*60 + 59)*60); 
@@ -19,7 +19,7 @@ if (TEST)
         'M/TopXS/n_Registro3_TopXS_2023-11-03_08-25-57.txt',
         'M/TopXS/n_Registro4_TopXS_2023-11-20_08-17-57.txt'}; 
 else
-     time_vector = 1:((7*60 + 59)*60)*1000; 
+     time_vector = 1:(((7*60 + 59)*60)*1000-360000); 
      
      files_TopM = {'M/TopM/Registro1_TopM_2023_10_19.txt', 
         'M/TopM/Registro2_TopM_2023-10-24_08-26-59.txt',
@@ -136,21 +136,6 @@ CIMedian_topXS_R4vsR1R2R3 = estimateCIMedian(indexes_topXS{4},data_topXS_R1R2R3,
 CIMean_topXS_R4vsR1R2R3 = estimateCIMean(indexes_topXS{4},data_topXS_R1R2R3,alph,iter);
 
 
-
-% Comparison Across Registers of TopM, TopXS, and TopS
-% Comparison of the 4 Registers of TopM vs the other 4 registers of TopXS, and TopS
-CIMedian_topMvstopS_topXS= estimateCIMedian(cell2mat(indexes_topM),data_topMvstopS_topXS,alph,iter);
-CIMean_topMvstopS_topXS= estimateCIMean(cell2mat(indexes_topM),data_topMvstopS_topXS,alph,iter);
-% Comparison of the 4 Registers of TopS vs the other 4 registers of TopXS, and TopM
-CIMedian_topSvstopM_topXS= estimateCIMedian(cell2mat(indexes_topS),data_topSvstopM_topXS,alph,iter);
-CIMean_topSvstopM_topXS= estimateCIMean(cell2mat(indexes_topS),data_topSvstopM_topXS,alph,iter);
-% Comparison of the 4 Registers of TopXS vs the other 4 registers of TopM, and TopS
-CIMedian_topXSvstopM_topS= estimateCIMedian(cell2mat(indexes_topXS),data_topXSvstopM_topS,alph,iter);
-CIMean_topXSvstopM_topS= estimateCIMean(cell2mat(indexes_topXS),data_topXSvstopM_topS,alph,iter);
-
-%disp(CIMedian)
-%disp(CIMean)
-
 % Histograms for each register of TopM
 for i = 1:4
     figure;
@@ -176,3 +161,60 @@ end
 %figure()
 %histogram(geometricMean_V_24, 20)
 
+
+indexes_topM_v = cell2mat(indexes_topM);
+indexes_topS_v = cell2mat(indexes_topS);
+indexes_topXS_v = cell2mat(indexes_topXS);
+
+z_mean_indexes_topM = mean (indexes_topM_v);
+z_var_indexes_topM = var(indexes_topM_v);
+z_mean_indexes_topS = mean (indexes_topS_v);
+z_var_indexes_topS = var(indexes_topS_v);
+z_mean_indexes_topXS = mean (indexes_topXS_v);
+z_var_indexes_topXS = var(indexes_topXS_v);
+
+
+y_CIMedian_topMvstopS= estimateCIMedian(indexes_topM_v, indexes_topS_v, alph, iter);
+y_CIMean_topMvstopS= estimateCIMean(indexes_topM_v, indexes_topS_v, alph, iter);
+
+y_CIMedian_topMvstopXS= estimateCIMedian(indexes_topM_v, indexes_topXS_v, alph, iter);
+y_CIMean_topMvstopXS= estimateCIMean(indexes_topM_v, indexes_topXS_v, alph, iter);
+
+y_CIMedian_topSvstopXS= estimateCIMedian(indexes_topS_v, indexes_topXS_v, alph, iter);
+y_CIMean_topSvstopXS= estimateCIMean(indexes_topS_v, indexes_topXS_v, alph, iter);
+
+
+x_mean_indexes_topM = cellfun(@mean, indexes_topM);
+x_mean_indexes_topS = cellfun(@mean, indexes_topS);
+x_mean_indexes_topXS = cellfun(@mean, indexes_topXS);
+
+x_var_indexes_topM = cellfun(@var, indexes_topM);
+x_var_indexes_topS = cellfun(@var, indexes_topS);
+x_var_indexes_topXS = cellfun(@var, indexes_topXS);
+
+figure
+histogram(indexes_topM_v, 20);
+title(['Histogram for indexes top M']);
+
+figure
+histogram(indexes_topS_v, 20);
+title(['Histogram for indexes top S']);
+
+figure
+histogram(indexes_topXS_v, 20);
+title(['Histogram for indexes top XS']);
+
+
+tiledlayout(3,1)
+
+nexttile
+histogram(indexes_topM_v, 20);
+title(['Histogram for indexes top M']);
+
+nexttile
+histogram(indexes_topS_v, 20);
+title(['Histogram for indexes top S']);
+
+nexttile
+histogram(indexes_topXS_v, 20);
+title(['Histogram for indexes top XS']);
